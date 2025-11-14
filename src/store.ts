@@ -14,6 +14,10 @@ import {
   createExperienceSlice
 } from '@/slices/experienceSlice.ts';
 import {
+  createLanguageSlice,
+  type LanguageState
+} from '@/slices/languageSlice.ts';
+import {
   type OpenMenusState,
   createOpenMenusSlice
 } from '@/slices/openMenusSlice.ts';
@@ -39,7 +43,8 @@ interface StoreState
     SkillsState,
     ProjectsState,
     CertificationsState,
-    OpenMenusState {}
+    OpenMenusState,
+    LanguageState {}
 
 const useStore = create<StoreState>()(
   persist(
@@ -50,7 +55,8 @@ const useStore = create<StoreState>()(
       ...createSkillsSlice(...a),
       ...createProjectsSlice(...a),
       ...createCertificationsSlice(...a),
-      ...createOpenMenusSlice(...a)
+      ...createOpenMenusSlice(...a),
+      ...createLanguageSlice(...a)
     }),
     { name: 'store' }
   )

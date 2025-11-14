@@ -51,6 +51,15 @@ export const EEducation = (): ReactElement => {
     });
   };
 
+  const editEducation = (id: string): void => {
+    const educationToEdit = education.find(e => e.id === id);
+
+    if (educationToEdit) {
+      setEducationObj(educationToEdit);
+      removeEducation(id);
+    }
+  };
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -60,6 +69,7 @@ export const EEducation = (): ReactElement => {
           nameKey='major'
           itemArr={education as ListProps[]}
           handleSort={sortEducation}
+          handleEdit={editEducation}
           handleRemove={removeEducation}
         />
 

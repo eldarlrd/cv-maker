@@ -1,6 +1,10 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { faGripVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faGripVertical,
+  faPencil,
+  faTrash
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'react';
 
@@ -8,9 +12,11 @@ import { type ListItemProps } from '@/components/editor/menus/DndList.tsx';
 
 export const ListItem = ({
   item,
+  handleEdit,
   handleRemove
 }: {
   item: ListItemProps;
+  handleEdit: () => void;
   handleRemove: () => void;
 }): ReactElement => {
   const id = item.id;
@@ -40,13 +46,19 @@ export const ListItem = ({
         <h1>{item.name}</h1>
       </span>
 
-      <button
-        id='trash-btn'
-        title='Remove'
-        type='button'
-        onClick={handleRemove}>
-        <FontAwesomeIcon icon={faTrash} />
-      </button>
+      <span>
+        <button id='edit-btn' title='Edit' type='button' onClick={handleEdit}>
+          <FontAwesomeIcon icon={faPencil} />
+        </button>
+
+        <button
+          id='trash-btn'
+          title='Remove'
+          type='button'
+          onClick={handleRemove}>
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+      </span>
     </div>
   );
 };

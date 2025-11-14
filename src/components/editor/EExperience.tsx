@@ -71,6 +71,15 @@ export const EExperience = (): ReactElement => {
     });
   };
 
+  const editExperience = (id: string): void => {
+    const experienceToEdit = experience.find(e => e.id === id);
+
+    if (experienceToEdit) {
+      setExperienceObj(experienceToEdit);
+      removeExperience(id);
+    }
+  };
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -80,6 +89,7 @@ export const EExperience = (): ReactElement => {
           nameKey='employer'
           itemArr={experience as ListProps[]}
           handleSort={sortExperience}
+          handleEdit={editExperience}
           handleRemove={removeExperience}
         />
 

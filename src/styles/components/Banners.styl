@@ -36,3 +36,29 @@ footer
 
 header
   font-size 1.375rem
+
+  span
+    margin 0 0.75rem
+
+  button
+    color main-fg
+    cursor pointer
+    height 2.25rem
+    min-width 2.5rem
+    background transparent
+    border-radius border-curve
+    transition transition-config
+    border edge-style transparent
+    transition-property outline, background
+    -webkit-tap-highlight-color tap-fg
+
+    &:focus-visible
+      outline edge-style highlight
+
+    @media (hover hover)
+      &:hover
+        background highlight
+
+  .active-lang
+    cursor default
+    background highlight

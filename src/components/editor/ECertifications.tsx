@@ -51,6 +51,15 @@ export const ECertifications = (): ReactElement => {
     });
   };
 
+  const editCertification = (id: string): void => {
+    const certificationToEdit = certifications.find(c => c.id === id);
+
+    if (certificationToEdit) {
+      setCertificationObj(certificationToEdit);
+      removeCertification(id);
+    }
+  };
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -60,6 +69,7 @@ export const ECertifications = (): ReactElement => {
           nameKey='certTitle'
           itemArr={certifications as ListProps[]}
           handleSort={sortCertifications}
+          handleEdit={editCertification}
           handleRemove={removeCertification}
         />
 

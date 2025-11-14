@@ -62,6 +62,15 @@ export const EProjects = (): ReactElement => {
     });
   };
 
+  const editProject = (id: string): void => {
+    const projectToEdit = projects.find(p => p.id === id);
+
+    if (projectToEdit) {
+      setProjectObj(projectToEdit);
+      removeProject(id);
+    }
+  };
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -71,6 +80,7 @@ export const EProjects = (): ReactElement => {
           nameKey='projName'
           itemArr={projects as ListProps[]}
           handleSort={sortProjects}
+          handleEdit={editProject}
           handleRemove={removeProject}
         />
 

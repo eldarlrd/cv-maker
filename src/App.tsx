@@ -8,11 +8,7 @@ import { Header } from '@/components/banners/Header.tsx';
 import { Editor } from '@/features/Editor.tsx';
 import { Preview } from '@/features/Preview.tsx';
 
-/*
-  TODO
-    1. Language Switch
-    2. Edit Feature
-*/
+// TODO: Language Switch
 export const App = (): ReactElement => {
   const printRef = useRef<HTMLElement | null>(null);
 

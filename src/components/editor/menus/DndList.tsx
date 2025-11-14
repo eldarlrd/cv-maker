@@ -31,6 +31,7 @@ interface DndListProps {
   nameKey: string;
   itemArr: ListProps[];
   handleSort: (sortedArr: ListProps[]) => void;
+  handleEdit: (id: string) => void;
   handleRemove: (id: string) => void;
 }
 
@@ -38,6 +39,7 @@ const DndList = ({
   nameKey,
   itemArr,
   handleSort,
+  handleEdit,
   handleRemove
 }: DndListProps): ReactElement => {
   // Drag & Drop Sorting
@@ -69,6 +71,9 @@ const DndList = ({
                   item={{
                     id: item.id,
                     name: item[nameKey as keyof ListProps] as string
+                  }}
+                  handleEdit={() => {
+                    handleEdit(item.id);
                   }}
                   handleRemove={() => {
                     handleRemove(item.id);
