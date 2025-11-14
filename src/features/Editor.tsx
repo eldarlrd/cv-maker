@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, type RefObject } from 'react';
 
 import { ECertifications } from '@/components/editor/ECertifications.tsx';
 import { EEducation } from '@/components/editor/EEducation.tsx';
@@ -11,7 +11,7 @@ import { Actions } from '@/components/editor/menus/Actions.tsx';
 export const Editor = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement | null>;
+  printRef: RefObject<HTMLElement | null>;
 }): ReactElement => (
   <section id='editor'>
     <form noValidate>

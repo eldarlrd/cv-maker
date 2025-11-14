@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, type RefObject } from 'react';
 
 import { PCertifications } from '@/components/preview/PCertifications.tsx';
 import { PEducation } from '@/components/preview/PEducation.tsx';
@@ -10,7 +10,7 @@ import { PSkills } from '@/components/preview/PSkills.tsx';
 export const Preview = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement | null>;
+  printRef: RefObject<HTMLElement | null>;
 }): ReactElement => (
   <main id='preview' ref={printRef}>
     <PPerson />

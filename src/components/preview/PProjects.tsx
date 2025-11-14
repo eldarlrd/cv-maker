@@ -6,6 +6,7 @@ export const PProjects = (): ReactElement => {
   const { projects } = useStore();
 
   const hasProjects = projects.length > 0;
+  const divider = ' | ';
 
   return (
     <div className='content complex'>
@@ -17,13 +18,18 @@ export const PProjects = (): ReactElement => {
             <div key={project.id}>
               <span>
                 <h2>
-                  {project.projName} |{' '}
-                  <a
-                    href={project.projLink}
-                    title={project.projLink}
-                    rel='noopener noreferrer nofollow'>
-                    Link
-                  </a>
+                  {project.projName}
+                  {project.projLink && (
+                    <>
+                      {divider}
+                      <a
+                        href={project.projLink}
+                        title={project.projLink}
+                        rel='noopener noreferrer nofollow'>
+                        Link
+                      </a>
+                    </>
+                  )}
                 </h2>
 
                 <h3>{project.stack.trim()}</h3>

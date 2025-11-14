@@ -1,6 +1,6 @@
 import { faCircleDown, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ReactElement } from 'react';
+import { type ReactElement, type RefObject } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import { useResetStore, useStore } from '@/store.ts';
@@ -8,7 +8,7 @@ import { useResetStore, useStore } from '@/store.ts';
 export const Actions = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement | null>;
+  printRef: RefObject<HTMLElement | null>;
 }): ReactElement => {
   const { person } = useStore();
 

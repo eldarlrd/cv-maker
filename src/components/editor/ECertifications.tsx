@@ -27,10 +27,7 @@ export const ECertifications = (): ReactElement => {
       link: ''
     });
 
-  const isDisabled =
-    !certificationObj.certTitle ||
-    !certificationObj.link ||
-    !certificationObj.issuer;
+  const isDisabled = !certificationObj.certTitle || !certificationObj.issuer;
 
   const handleCertificationInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;

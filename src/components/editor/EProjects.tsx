@@ -24,7 +24,6 @@ export const EProjects = (): ReactElement => {
 
   const isDisabled =
     !projectObj.projName ||
-    !projectObj.projLink ||
     !projectObj.stack ||
     !(projectObj.projDescriptions.length > 0) ||
     projectObj.projDescriptions.some(desc => desc.trim() === '');

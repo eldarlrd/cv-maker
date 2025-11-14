@@ -17,12 +17,14 @@ export const PCertifications = (): ReactElement => {
             {certifications.map(certification => (
               <li key={certification.id}>
                 {certification.certTitle} -{' '}
-                <a
-                  title={certification.link}
-                  href={certification.link}
-                  rel='noopener noreferrer nofollow'>
-                  {certification.issuer}
-                </a>
+                {certification.link ?
+                  <a
+                    title={certification.link}
+                    href={certification.link}
+                    rel='noopener noreferrer nofollow'>
+                    {certification.issuer}
+                  </a>
+                : certification.issuer}
               </li>
             ))}
           </ul>
