@@ -25,7 +25,7 @@ export const PProjects = (): ReactElement => {
                       <a
                         href={project.projLink}
                         title={project.projLink}
-                        rel='noopener noreferrer nofollow'>
+                        rel='noreferrer'>
                         Link
                       </a>
                     </>

@@ -11,9 +11,27 @@ export const PPerson = (): ReactElement => {
     info => typeof info === 'string' && info.trim()
   );
 
+  const visibleLinks = Object.entries(person.links).filter(
+    ([_, link]: [string, string]) => link.trim()
+  );
+
   const hasLinkInfo = Object.values(person.links).some((link: string) =>
     link.trim()
   );
+
+  const contactInfo: ReactElement[] = [];
+
+  if (person.email) {
+    contactInfo.push(
+      <a key='email' href={mailToUrl} title={mailToUrl} rel='noreferrer'>
+        {person.email}
+      </a>
+    );
+  }
+
+  if (person.phone) contactInfo.push(<>{person.phone}</>);
+
+  if (person.persLocation) contactInfo.push(<>{person.persLocation}</>);
 
   return (
     <div id='person'>
@@ -23,36 +41,25 @@ export const PPerson = (): ReactElement => {
           <h2>{person.title}</h2>
 
           <h3>
-            {person.email && (
-              <a
-                href={mailToUrl}
-                title={mailToUrl}
-                rel='noopener noreferrer nofollow'>
-                {person.email}
-              </a>
-            )}{' '}
-            {person.email && person.phone && ' | '}
-            {person.phone}
+            {contactInfo.map((element, i) => (
+              <span key={i}>
+                {element}
+                {i < contactInfo.length - 1 && ' | '}
+              </span>
+            ))}
           </h3>
 
           <h4>
-            {Object.entries(person.links).map(
-              ([site, link]: [string, string], i) => (
-                <span key={site}>
-                  {link.trim() && (
-                    <a
-                      href={link.trim()}
-                      title={link.trim()}
-                      rel='noopener noreferrer nofollow'>
-                      {site}
-                    </a>
-                  )}
-                  {i < Object.entries(person.links).length - 1 &&
-                    link.trim() &&
-                    ' | '}
-                </span>
-              )
-            )}
+            {visibleLinks.map(([site, link]: [string, string], i) => (
+              <span key={site}>
+                {link.trim() && (
+                  <a href={link.trim()} title={link.trim()} rel='noreferrer'>
+                    {site}
+                  </a>
+                )}
+                {i < visibleLinks.length - 1 && ' | '}
+              </span>
+            ))}
           </h4>
           <hr />
         </>

@@ -50,9 +50,9 @@ export default tseslint.config({
     'react-refresh': reactRefresh
   },
   rules: {
-    '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/explicit-member-accessibility': 2,
     '@typescript-eslint/explicit-function-return-type': 2,
+    '@typescript-eslint/no-unused-vars': [2, { argsIgnorePattern: '^_' }],
     '@typescript-eslint/consistent-type-imports': [2, { fixStyle: 'inline-type-imports' }],
     'no-relative-import-paths/no-relative-import-paths': [1, { rootDir: 'src', prefix: '@' }],
     'import/order': [1, { 'newlines-between': 'always', alphabetize: { order: 'asc' } }],

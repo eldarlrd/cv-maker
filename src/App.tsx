@@ -12,8 +12,6 @@ import { Preview } from '@/features/Preview.tsx';
   TODO
     1. Language Switch
     2. Edit Feature
-    3. Links not Required
-    4. Kaggle
 */
 export const App = (): ReactElement => {
   const printRef = useRef<HTMLElement | null>(null);

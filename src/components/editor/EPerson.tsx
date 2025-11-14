@@ -61,7 +61,9 @@ export const EPerson = (): ReactElement => {
               autoCapitalize='words'
             />
           </span>
+        </div>
 
+        <div className='three-column'>
           <span>
             <label htmlFor='email'>Email</label>
             <input
@@ -87,6 +89,20 @@ export const EPerson = (): ReactElement => {
               value={person.phone}
               onInput={handlePersonInput}
               pattern='^(\+?\d{1,3}\s?)?(\(\d{2,3}\)|\d{2,3})[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$'
+              autoComplete='on'
+            />
+          </span>
+
+          <span>
+            <label htmlFor='persLocation'>Location</label>
+            <input
+              title=''
+              id='persLocation'
+              type='persLocation'
+              minLength={1}
+              maxLength={128}
+              value={person.persLocation}
+              onInput={handlePersonInput}
               autoComplete='on'
             />
           </span>

@@ -21,7 +21,7 @@ export const PCertifications = (): ReactElement => {
                   <a
                     title={certification.link}
                     href={certification.link}
-                    rel='noopener noreferrer nofollow'>
+                    rel='noreferrer'>
                     {certification.issuer}
                   </a>
                 : certification.issuer}
