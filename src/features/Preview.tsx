@@ -10,7 +10,7 @@ import { PSkills } from '@/components/preview/PSkills.tsx';
 export const Preview = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement>;
+  printRef: React.RefObject<HTMLElement | null>;
 }): ReactElement => (
   <main id='preview' ref={printRef}>
     <PPerson />

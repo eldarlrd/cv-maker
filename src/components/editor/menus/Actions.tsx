@@ -8,7 +8,7 @@ import { useResetStore, useStore } from '@/store.ts';
 export const Actions = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement>;
+  printRef: React.RefObject<HTMLElement | null>;
 }): ReactElement => {
   const { person } = useStore();
 

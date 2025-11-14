@@ -11,7 +11,7 @@ import { Actions } from '@/components/editor/menus/Actions.tsx';
 export const Editor = ({
   printRef
 }: {
-  printRef: React.RefObject<HTMLElement>;
+  printRef: React.RefObject<HTMLElement | null>;
 }): ReactElement => (
   <section id='editor'>
     <form noValidate>
