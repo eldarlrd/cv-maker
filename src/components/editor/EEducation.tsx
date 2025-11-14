@@ -29,6 +29,7 @@ export const EEducation = (): ReactElement => {
 
   const handleEducationInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
+
     setEducationObj(prevObj => ({
       ...prevObj,
       [id]: value

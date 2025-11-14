@@ -1,7 +1,7 @@
 /**
  * @license AGPL-3.0-only
  * CV Maker - A Resume Builder
- * Copyright (C) 2024 Eldar Pashazade <eldarlrd@pm.me>
+ * Copyright (C) 2024-2025 Eldar Pashazade <eldarlrd@pm.me>
  *
  * This file is part of CV Maker.
  *

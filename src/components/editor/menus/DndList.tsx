@@ -43,9 +43,11 @@ const DndList = ({
   // Drag & Drop Sorting
   const onDragEnd = (e: DragEndEvent): void => {
     const { active, over } = e;
+
     if (active.id !== over?.id) {
       const prevIndex = itemArr.findIndex(item => item.id === active.id);
       const newIndex = itemArr.findIndex(item => item.id === over?.id);
+
       handleSort(arrayMove(itemArr, prevIndex, newIndex));
     }
   };

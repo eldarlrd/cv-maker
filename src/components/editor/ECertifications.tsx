@@ -34,6 +34,7 @@ export const ECertifications = (): ReactElement => {
 
   const handleCertificationInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
+
     setCertificationObj(prevObj => ({
       ...prevObj,
       [id]: value

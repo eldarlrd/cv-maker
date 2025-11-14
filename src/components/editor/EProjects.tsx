@@ -31,6 +31,7 @@ export const EProjects = (): ReactElement => {
 
   const handleProjectInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
+
     setProjectObj(prevObj => ({
       ...prevObj,
       [id]: value
@@ -40,7 +41,8 @@ export const EProjects = (): ReactElement => {
   const handleProjDescriptionsInput = (
     e: ChangeEvent<HTMLTextAreaElement>
   ): void => {
-    const projDescriptions = e.target.value.split('\n\n').map(block => block);
+    const projDescriptions = e.target.value.split('\n\n');
+
     setProjectObj({
       ...projectObj,
       projDescriptions

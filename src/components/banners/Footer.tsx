@@ -4,7 +4,7 @@ import { type ReactElement } from 'react';
 
 export const Footer = (): ReactElement => (
   <footer>
-    © 2024{' '}
+    © 2024 - 2025{' '}
     <a
       title='Source'
       target='_blank'

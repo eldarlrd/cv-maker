@@ -37,6 +37,7 @@ export const EExperience = (): ReactElement => {
 
   const handleExperienceInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
+
     setExperienceObj(prevObj => ({
       ...prevObj,
       [id]: value
@@ -46,7 +47,8 @@ export const EExperience = (): ReactElement => {
   const handleDescriptionsInput = (
     e: ChangeEvent<HTMLTextAreaElement>
   ): void => {
-    const descriptions = e.target.value.split('\n\n').map(block => block);
+    const descriptions = e.target.value.split('\n\n');
+
     setExperienceObj({
       ...experienceObj,
       descriptions
