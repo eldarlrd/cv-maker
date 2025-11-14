@@ -1,11 +1,14 @@
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
-import { useState, type ReactElement, type ChangeEvent } from 'react';
+import { type ChangeEvent, type ReactElement, useState } from 'react';
 
 import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '@/config/translations.ts';
 import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const ECertifications = (): ReactElement => {
@@ -15,7 +18,8 @@ export const ECertifications = (): ReactElement => {
     sortCertifications,
     addCertification,
     removeCertification,
-    openMenus
+    openMenus,
+    language
   } = useStore();
   const isVisible = openMenus.includes(section);
 
@@ -60,6 +64,8 @@ export const ECertifications = (): ReactElement => {
     }
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -75,7 +81,9 @@ export const ECertifications = (): ReactElement => {
 
         <div>
           <span>
-            <label htmlFor='certTitle'>Title</label>
+            <label htmlFor='certTitle'>
+              {isEnglish ? CERTIFICATIONS_ENG.title : CERTIFICATIONS_AZE.title}
+            </label>
             <input
               title=''
               type='text'
@@ -91,7 +99,11 @@ export const ECertifications = (): ReactElement => {
 
         <div className='two-column'>
           <span>
-            <label htmlFor='issuer'>Issuer</label>
+            <label htmlFor='issuer'>
+              {isEnglish ?
+                CERTIFICATIONS_ENG.issuer
+              : CERTIFICATIONS_AZE.issuer}
+            </label>
             <input
               title=''
               type='text'
@@ -106,7 +118,8 @@ export const ECertifications = (): ReactElement => {
 
           <span>
             <label htmlFor='link'>
-              Link <FontAwesomeIcon size='sm' icon={faLink} />
+              {isEnglish ? CERTIFICATIONS_ENG.link : CERTIFICATIONS_AZE.link}{' '}
+              <FontAwesomeIcon size='sm' icon={faLink} />
             </label>
             <input
               title=''
@@ -126,7 +139,7 @@ export const ECertifications = (): ReactElement => {
           className='add-btn'
           onClick={handleAddCertification}
           disabled={isDisabled}>
-          Add
+          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

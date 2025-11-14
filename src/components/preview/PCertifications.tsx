@@ -1,17 +1,25 @@
 import { type ReactElement } from 'react';
 
+import { SECTIONS_AZE } from '@/config/translations.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const PCertifications = (): ReactElement => {
-  const { certifications } = useStore();
+  const section = 'Certifications';
+  const { certifications, language } = useStore();
 
   const hasCertifications = certifications.length > 0;
+  const isEnglish = language === LANGUAGES.English;
 
   return (
     <div className='content simple'>
       {hasCertifications && (
         <>
-          <h1>CERTIFICATIONS</h1>
+          <h1>
+            {isEnglish ?
+              section.toUpperCase()
+            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+          </h1>
 
           <ul>
             {certifications.map(certification => (

@@ -13,7 +13,7 @@ interface PersonDetails {
   title: string;
   email: string;
   phone: string;
-  persLocation: string;
+  address: string;
   links: PersonLinks;
 }
 
@@ -27,7 +27,7 @@ const initialPerson: PersonDetails = {
   title: '',
   email: '',
   phone: '',
-  persLocation: '',
+  address: '',
   links: {
     Portfolio: '',
     GitHub: '',

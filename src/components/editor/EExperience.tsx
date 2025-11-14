@@ -3,7 +3,10 @@ import { useState, type ReactElement, type ChangeEvent } from 'react';
 
 import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { ACTIONS_ENG, EXPERIENCE_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE, EXPERIENCE_AZE } from '@/config/translations.ts';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EExperience = (): ReactElement => {
@@ -13,7 +16,8 @@ export const EExperience = (): ReactElement => {
     sortExperience,
     addExperience,
     removeExperience,
-    openMenus
+    openMenus,
+    language
   } = useStore();
   const isVisible = openMenus.includes(section);
 
@@ -80,6 +84,8 @@ export const EExperience = (): ReactElement => {
     }
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -95,7 +101,9 @@ export const EExperience = (): ReactElement => {
 
         <div className='two-column'>
           <span>
-            <label htmlFor='employer'>Employer</label>
+            <label htmlFor='employer'>
+              {isEnglish ? EXPERIENCE_ENG.employer : EXPERIENCE_AZE.employer}
+            </label>
             <input
               title=''
               type='text'
@@ -109,7 +117,9 @@ export const EExperience = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='position'>Position</label>
+            <label htmlFor='position'>
+              {isEnglish ? EXPERIENCE_ENG.position : EXPERIENCE_AZE.position}
+            </label>
             <input
               title=''
               type='text'
@@ -125,7 +135,9 @@ export const EExperience = (): ReactElement => {
 
         <div className='three-column'>
           <span>
-            <label htmlFor='location'>Location</label>
+            <label htmlFor='location'>
+              {isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
+            </label>
             <input
               title=''
               type='text'
@@ -139,7 +151,9 @@ export const EExperience = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='startDate'>Start Date</label>
+            <label htmlFor='startDate'>
+              {isEnglish ? EXPERIENCE_ENG.startDate : EXPERIENCE_AZE.startDate}
+            </label>
             <input
               title=''
               type='text'
@@ -153,7 +167,9 @@ export const EExperience = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='endDate'>End Date</label>
+            <label htmlFor='endDate'>
+              {isEnglish ? EXPERIENCE_ENG.endDate : EXPERIENCE_AZE.endDate}
+            </label>
             <input
               title=''
               type='text'
@@ -168,7 +184,11 @@ export const EExperience = (): ReactElement => {
         </div>
 
         <span>
-          <label htmlFor='descriptions'>Description</label>
+          <label htmlFor='descriptions'>
+            {isEnglish ?
+              EXPERIENCE_ENG.description
+            : EXPERIENCE_AZE.description}
+          </label>
           <textarea
             title=''
             rows={6}
@@ -186,7 +206,7 @@ export const EExperience = (): ReactElement => {
           className='add-btn'
           onClick={handleAddExperience}
           disabled={isDisabled}>
-          Add
+          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

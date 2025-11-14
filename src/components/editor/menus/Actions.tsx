@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement, type RefObject } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
+import { ACTIONS_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE } from '@/config/translations.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useResetStore, useStore } from '@/store.ts';
 
 export const Actions = ({
@@ -10,7 +13,7 @@ export const Actions = ({
 }: {
   printRef: RefObject<HTMLElement | null>;
 }): ReactElement => {
-  const { person } = useStore();
+  const { person, language } = useStore();
 
   const kebabize = (str: string): string => str.trim().replaceAll(' ', '_');
   const reactToPrintFn = useReactToPrint({
@@ -27,6 +30,8 @@ export const Actions = ({
       }`
   });
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <div id='actions'>
       <button
@@ -34,7 +39,8 @@ export const Actions = ({
         id='reset-btn'
         className='action-btn'
         onClick={useResetStore}>
-        <FontAwesomeIcon icon={faRotate} /> Reset
+        <FontAwesomeIcon icon={faRotate} />{' '}
+        {isEnglish ? ACTIONS_ENG.reset : ACTIONS_AZE.reset}
       </button>
 
       <button
@@ -42,7 +48,8 @@ export const Actions = ({
         id='download-btn'
         className='action-btn'
         onClick={reactToPrintFn}>
-        <FontAwesomeIcon icon={faCircleDown} /> Download
+        <FontAwesomeIcon icon={faCircleDown} />{' '}
+        {isEnglish ? ACTIONS_ENG.download : ACTIONS_AZE.download}
       </button>
     </div>
   );

@@ -10,11 +10,13 @@ export const Header = (): ReactElement => {
     switchLanguage(newLanguage);
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <header>
       <button
         type='button'
-        className={language === LANGUAGES.English ? 'active-lang' : ''}
+        className={isEnglish ? 'active-lang' : ''}
         title='English'
         onClick={() => {
           toggleLanguage(LANGUAGES.English);
@@ -26,8 +28,8 @@ export const Header = (): ReactElement => {
 
       <button
         type='button'
-        className={language === LANGUAGES.Azerbaijani ? 'active-lang' : ''}
-        title='Azerbaijani'
+        className={isEnglish ? '' : 'active-lang'}
+        title='Azərbaycanca'
         onClick={() => {
           toggleLanguage(LANGUAGES.Azerbaijani);
         }}>

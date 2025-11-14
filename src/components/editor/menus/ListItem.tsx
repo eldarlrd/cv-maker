@@ -9,6 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'react';
 
 import { type ListItemProps } from '@/components/editor/menus/DndList.tsx';
+import { ACTIONS_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE } from '@/config/translations.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
+import { useStore } from '@/store.ts';
 
 export const ListItem = ({
   item,
@@ -19,6 +23,7 @@ export const ListItem = ({
   handleEdit: () => void;
   handleRemove: () => void;
 }): ReactElement => {
+  const { language } = useStore();
   const id = item.id;
 
   // Drag & Drop Movement
@@ -32,6 +37,8 @@ export const ListItem = ({
     transform: CSS.Translate.toString(transform)
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <div
       id={id}
@@ -39,7 +46,11 @@ export const ListItem = ({
       ref={setNodeRef}
       style={style}>
       <span>
-        <button id='drag-btn' title='Reorder' {...listeners} type='button'>
+        <button
+          id='drag-btn'
+          title={isEnglish ? ACTIONS_ENG.reorder : ACTIONS_AZE.reorder}
+          {...listeners}
+          type='button'>
           <FontAwesomeIcon icon={faGripVertical} />
         </button>
 
@@ -47,13 +58,17 @@ export const ListItem = ({
       </span>
 
       <span>
-        <button id='edit-btn' title='Edit' type='button' onClick={handleEdit}>
+        <button
+          id='edit-btn'
+          title={isEnglish ? ACTIONS_ENG.edit : ACTIONS_AZE.edit}
+          type='button'
+          onClick={handleEdit}>
           <FontAwesomeIcon icon={faPencil} />
         </button>
 
         <button
           id='trash-btn'
-          title='Remove'
+          title={isEnglish ? ACTIONS_ENG.remove : ACTIONS_AZE.remove}
           type='button'
           onClick={handleRemove}>
           <FontAwesomeIcon icon={faTrash} />

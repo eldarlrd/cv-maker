@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ChangeEvent, type ReactElement } from 'react';
 
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { PERSONAL_ENG } from '@/config/fields.ts';
+import { PERSONAL_AZE } from '@/config/translations.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EPerson = (): ReactElement => {
-  const section = 'Personal Info';
-  const { person, setPerson, openMenus } = useStore();
+  const section = 'Personal';
+  const { person, setPerson, openMenus, language } = useStore();
   const isVisible = openMenus.includes(section);
 
   const handlePersonInput = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -27,6 +30,8 @@ export const EPerson = (): ReactElement => {
     });
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -34,7 +39,9 @@ export const EPerson = (): ReactElement => {
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <div className='two-column'>
           <span>
-            <label htmlFor='name'>Full Name</label>
+            <label htmlFor='name'>
+              {isEnglish ? PERSONAL_ENG.fullName : PERSONAL_AZE.fullName}
+            </label>
             <input
               title=''
               id='name'
@@ -49,7 +56,9 @@ export const EPerson = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='title'>Profession</label>
+            <label htmlFor='title'>
+              {isEnglish ? PERSONAL_ENG.profession : PERSONAL_AZE.profession}
+            </label>
             <input
               title=''
               id='title'
@@ -79,7 +88,9 @@ export const EPerson = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='phone'>Phone</label>
+            <label htmlFor='phone'>
+              {isEnglish ? PERSONAL_ENG.phone : PERSONAL_AZE.phone}
+            </label>
             <input
               title=''
               id='phone'
@@ -94,14 +105,16 @@ export const EPerson = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='persLocation'>Location</label>
+            <label htmlFor='address'>
+              {isEnglish ? PERSONAL_ENG.address : PERSONAL_AZE.address}
+            </label>
             <input
               title=''
-              id='persLocation'
-              type='persLocation'
+              id='address'
+              type='address'
               minLength={1}
               maxLength={128}
-              value={person.persLocation}
+              value={person.address}
               onInput={handlePersonInput}
               autoComplete='on'
             />

@@ -1,15 +1,24 @@
 import { nanoid } from 'nanoid';
-import { useState, type ReactElement, type ChangeEvent } from 'react';
+import { type ChangeEvent, type ReactElement, useState } from 'react';
 
 import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { ACTIONS_ENG, EDUCATION_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE, EDUCATION_AZE } from '@/config/translations.ts';
 import { type EducationDetails } from '@/slices/educationSlice.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EEducation = (): ReactElement => {
   const section = 'Education';
-  const { education, sortEducation, addEducation, removeEducation, openMenus } =
-    useStore();
+  const {
+    education,
+    sortEducation,
+    addEducation,
+    removeEducation,
+    openMenus,
+    language
+  } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [educationObj, setEducationObj] = useState<EducationDetails>({
@@ -60,6 +69,8 @@ export const EEducation = (): ReactElement => {
     }
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -75,7 +86,9 @@ export const EEducation = (): ReactElement => {
 
         <div className='two-column'>
           <span>
-            <label htmlFor='college'>College</label>
+            <label htmlFor='college'>
+              {isEnglish ? EDUCATION_ENG.college : EDUCATION_AZE.college}
+            </label>
             <input
               title=''
               type='text'
@@ -89,7 +102,9 @@ export const EEducation = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='major'>Major</label>
+            <label htmlFor='major'>
+              {isEnglish ? EDUCATION_ENG.major : EDUCATION_AZE.major}
+            </label>
             <input
               title=''
               type='text'
@@ -105,7 +120,9 @@ export const EEducation = (): ReactElement => {
 
         <div className='three-column'>
           <span>
-            <label htmlFor='degree'>Degree</label>
+            <label htmlFor='degree'>
+              {isEnglish ? EDUCATION_ENG.degree : EDUCATION_AZE.degree}
+            </label>
             <input
               title=''
               type='text'
@@ -119,7 +136,9 @@ export const EEducation = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='startYear'>Start Year</label>
+            <label htmlFor='startYear'>
+              {isEnglish ? EDUCATION_ENG.startYear : EDUCATION_AZE.startYear}
+            </label>
             <input
               title=''
               type='text'
@@ -133,7 +152,9 @@ export const EEducation = (): ReactElement => {
           </span>
 
           <span>
-            <label htmlFor='endYear'>End Year</label>
+            <label htmlFor='endYear'>
+              {isEnglish ? EDUCATION_ENG.endYear : EDUCATION_AZE.endYear}
+            </label>
             <input
               title=''
               type='text'
@@ -152,7 +173,7 @@ export const EEducation = (): ReactElement => {
           className='add-btn'
           onClick={handleAddEducation}
           disabled={isDisabled}>
-          Add
+          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

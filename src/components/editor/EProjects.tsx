@@ -5,13 +5,22 @@ import { useState, type ReactElement, type ChangeEvent } from 'react';
 
 import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { ACTIONS_ENG, PROJECTS_ENG } from '@/config/fields.ts';
+import { ACTIONS_AZE, PROJECTS_AZE } from '@/config/translations.ts';
+import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { type ProjectDetails } from '@/slices/projectsSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EProjects = (): ReactElement => {
   const section = 'Projects';
-  const { projects, sortProjects, addProject, removeProject, openMenus } =
-    useStore();
+  const {
+    projects,
+    sortProjects,
+    addProject,
+    removeProject,
+    openMenus,
+    language
+  } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [projectObj, setProjectObj] = useState<ProjectDetails>({
@@ -71,6 +80,8 @@ export const EProjects = (): ReactElement => {
     }
   };
 
+  const isEnglish = language === LANGUAGES.English;
+
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
@@ -86,7 +97,9 @@ export const EProjects = (): ReactElement => {
 
         <div className='two-column'>
           <span>
-            <label htmlFor='projName'>Name</label>
+            <label htmlFor='projName'>
+              {isEnglish ? PROJECTS_ENG.name : PROJECTS_AZE.name}
+            </label>
             <input
               title=''
               type='text'
@@ -102,7 +115,8 @@ export const EProjects = (): ReactElement => {
 
           <span>
             <label htmlFor='projLink'>
-              Link <FontAwesomeIcon size='sm' icon={faLink} />
+              {isEnglish ? PROJECTS_ENG.link : PROJECTS_AZE.link}{' '}
+              <FontAwesomeIcon size='sm' icon={faLink} />
             </label>
             <input
               title=''
@@ -119,7 +133,10 @@ export const EProjects = (): ReactElement => {
 
         <div id='editor-project-stack'>
           <span>
-            <label htmlFor='stack'>Stack</label>
+            <label htmlFor='stack'>
+              {' '}
+              {isEnglish ? PROJECTS_ENG.stack : PROJECTS_AZE.stack}
+            </label>
             <input
               title=''
               type='text'
@@ -134,7 +151,10 @@ export const EProjects = (): ReactElement => {
         </div>
 
         <span>
-          <label htmlFor='projDescriptions'>Description</label>
+          <label htmlFor='projDescriptions'>
+            {' '}
+            {isEnglish ? PROJECTS_ENG.description : PROJECTS_AZE.description}
+          </label>
           <textarea
             title=''
             rows={6}
@@ -152,7 +172,7 @@ export const EProjects = (): ReactElement => {
           className='add-btn'
           onClick={handleAddProject}
           disabled={isDisabled}>
-          Add
+          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

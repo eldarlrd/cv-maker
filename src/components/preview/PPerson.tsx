@@ -31,7 +31,7 @@ export const PPerson = (): ReactElement => {
 
   if (person.phone) contactInfo.push(<>{person.phone}</>);
 
-  if (person.persLocation) contactInfo.push(<>{person.persLocation}</>);
+  if (person.address) contactInfo.push(<>{person.address}</>);
 
   return (
     <div id='person'>

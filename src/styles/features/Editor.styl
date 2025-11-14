@@ -82,6 +82,21 @@
       gap 0.375rem
       flex-direction column
 
+  h1
+  label
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    user-select none
+
+    &::selection
+      color main-fg
+      background main-bg
+
+  h1
+    margin 0
+    font-weight 500
+
   .editor-menu
     display flex
     min-width 100%
@@ -104,6 +119,9 @@
       &:hover
         background highlight
 
+    h1
+      text-align start
+
     div
       padding 0.625rem
       color field-bg
@@ -113,15 +131,3 @@
 
       &.open
         transform rotate(180deg)
-
-  h1
-  label
-    user-select none
-
-    &::selection
-      color main-fg
-      background main-bg
-
-  h1
-    margin 0
-    font-weight 500

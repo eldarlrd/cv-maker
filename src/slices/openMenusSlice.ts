@@ -5,7 +5,7 @@ interface OpenMenusState {
   toggleMenu: (menuName: string) => void;
 }
 
-const initialMenus: string[] = ['Personal Info'];
+const initialMenus: string[] = ['Personal'];
 
 const createOpenMenusSlice: StateCreator<OpenMenusState> = set => ({
   openMenus: initialMenus,
