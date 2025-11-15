@@ -1,4 +1,4 @@
-// * Ease of Access
+// * Easily Extendable
 const SKILLSETS_ENG = {
   progLang: 'Programming Languages',
   libFrame: 'Libraries / Frameworks',

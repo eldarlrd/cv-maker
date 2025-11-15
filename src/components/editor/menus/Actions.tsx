@@ -18,6 +18,14 @@ export const Actions = ({
   const kebabize = (str: string): string => str.trim().replaceAll(' ', '_');
   const reactToPrintFn = useReactToPrint({
     contentRef: printRef,
+    // * Mobile Fix | Courtesy of https://github.com/sensasi-delight
+    preserveAfterPrint: true,
+    print: printIframe => {
+      return new Promise(() => {
+        printIframe.style.display = 'none';
+        printIframe.contentWindow?.print();
+      });
+    },
     documentTitle: kebabize(`${person.name} ${person.title} CV`),
     pageStyle: `
       main {
