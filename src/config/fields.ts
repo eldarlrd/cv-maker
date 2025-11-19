@@ -3,7 +3,8 @@ const SKILLSETS_ENG = {
   progLang: 'Programming Languages',
   libFrame: 'Libraries / Frameworks',
   toolPlat: 'Tools / Platforms',
-  databases: 'Databases'
+  databases: 'Databases',
+  languages: 'Languages'
 } as const;
 
 const ACTIONS_ENG = {

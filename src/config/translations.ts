@@ -2,7 +2,8 @@ const SKILLSETS_AZE = {
   progLang: 'Proqramlaşdırma Dilləri',
   libFrame: 'Kitabxanalar / Freymvorklar',
   toolPlat: 'Alətlər / Platformalar',
-  databases: 'Data Bazalar'
+  databases: 'Data Bazalar',
+  languages: 'Dillər'
 } as const;
 
 const ACTIONS_AZE = {

@@ -7,6 +7,7 @@ interface SkillsDetails {
   libFrame: string;
   toolPlat: string;
   databases: string;
+  languages: string;
 }
 
 interface SkillsState {
@@ -18,7 +19,8 @@ const initialSkills: SkillsDetails = {
   progLang: '',
   libFrame: '',
   toolPlat: '',
-  databases: ''
+  databases: '',
+  languages: ''
 };
 
 const createSkillsSlice: StateCreator<SkillsState> = set => (
