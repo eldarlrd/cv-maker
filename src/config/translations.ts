@@ -1,9 +1,11 @@
+// biome-ignore-all assist/source/useSortedKeys: intended order
+
 const SKILLSETS_AZE = {
+  progLang: 'Proqramlaşdırma Dilləri',
+  libFrame: 'Kitabxanalar / Freymvorklar',
+  toolPlat: 'Alətlər / Platformalar',
   databases: 'Data Bazalar',
   languages: 'Dillər',
-  libFrame: 'Kitabxanalar / Freymvorklar',
-  progLang: 'Proqramlaşdırma Dilləri',
-  toolPlat: 'Alətlər / Platformalar',
 } as const;
 
 const ACTIONS_AZE = {

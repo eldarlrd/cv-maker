@@ -1,10 +1,12 @@
+// biome-ignore-all assist/source/useSortedKeys: intended order
+
 // # Easily Extendable
 const SKILLSETS_ENG = {
+  progLang: 'Programming Languages',
+  libFrame: 'Libraries / Frameworks',
+  toolPlat: 'Tools / Platforms',
   databases: 'Databases',
   languages: 'Languages',
-  libFrame: 'Libraries / Frameworks',
-  progLang: 'Programming Languages',
-  toolPlat: 'Tools / Platforms',
 } as const;
 
 const ACTIONS_ENG = {
