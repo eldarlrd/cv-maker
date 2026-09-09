@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { registerSliceReset } from '$/sliceReset.ts';
+import { registerSliceClear } from '$/sliceClear.ts';
 
 interface ExperienceDetails {
   descriptions: string[];
@@ -22,14 +22,14 @@ interface ExperienceState {
 const initialExperience: ExperienceDetails[] = [];
 
 const createExperienceSlice: StateCreator<ExperienceState> = (set) => {
-  registerSliceReset(() => {
+  registerSliceClear(() => {
     set({ experience: initialExperience });
   });
 
   return {
     addExperience: (newExperience: ExperienceDetails): void => {
       set((state) => ({
-        experience: [...state.experience, newExperience],
+        experience: [newExperience, ...state.experience],
       }));
     },
     experience: initialExperience,

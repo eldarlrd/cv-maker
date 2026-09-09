@@ -1,7 +1,7 @@
 // biome-ignore-all assist/source/useSortedKeys: intended order
 import type { StateCreator } from 'zustand';
 
-import { registerSliceReset } from '$/sliceReset.ts';
+import { registerSliceClear } from '$/sliceClear.ts';
 
 interface SkillsDetails {
   databases: string;
@@ -25,7 +25,7 @@ const initialSkills: SkillsDetails = {
 };
 
 const createSkillsSlice: StateCreator<SkillsState> = (set) => {
-  registerSliceReset(() => {
+  registerSliceClear(() => {
     set({ skills: initialSkills });
   });
 

@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { registerSliceReset } from '$/sliceReset.ts';
+import { registerSliceClear } from '$/sliceClear.ts';
 
 interface PersonLinks {
   GitHub: string;
@@ -36,7 +36,7 @@ const initialPerson: PersonDetails = {
 };
 
 const createPersonSlice: StateCreator<PersonState> = (set) => {
-  registerSliceReset(() => {
+  registerSliceClear(() => {
     set({ person: initialPerson });
   });
 

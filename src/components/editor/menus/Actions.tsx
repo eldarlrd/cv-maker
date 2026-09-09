@@ -1,11 +1,11 @@
-import { faCircleDown, faRotate } from '@fortawesome/free-solid-svg-icons';
+import { faCircleDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement, RefObject } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import { ACTIONS_ENG } from '#/fields.ts';
 import { ACTIONS_AZE } from '#/translations.ts';
-import { resetStore, useStore } from '@/store.ts';
+import { clearStore, useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
 export const Actions = ({
@@ -41,8 +41,8 @@ export const Actions = ({
 
   return (
     <div id='actions'>
-      <button className='action-btn' id='reset-btn' onClick={resetStore} type='button'>
-        <FontAwesomeIcon icon={faRotate} /> {isEnglish ? ACTIONS_ENG.reset : ACTIONS_AZE.reset}
+      <button className='action-btn' id='clear-btn' onClick={clearStore} type='button'>
+        <FontAwesomeIcon icon={faTrash} /> {/* isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear */}
       </button>
 
       <button className='action-btn' id='download-btn' onClick={reactToPrintFn} type='button'>

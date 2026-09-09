@@ -9,7 +9,7 @@ import { type OpenMenusState, createOpenMenusSlice } from '$/openMenusSlice.ts';
 import { type PersonState, createPersonSlice } from '$/personSlice.ts';
 import { type ProjectsState, createProjectsSlice } from '$/projectsSlice.ts';
 import { type SkillsState, createSkillsSlice } from '$/skillsSlice.ts';
-import { resetStore } from '$/sliceReset.ts';
+import { clearStore } from '$/sliceClear.ts';
 
 interface StoreState
   extends PersonState,
@@ -37,4 +37,4 @@ const useStore = create<StoreState>()(
   )
 );
 
-export { resetStore, useStore };
+export { clearStore, useStore };

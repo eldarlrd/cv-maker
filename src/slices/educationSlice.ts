@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { registerSliceReset } from '$/sliceReset.ts';
+import { registerSliceClear } from '$/sliceClear.ts';
 
 interface EducationDetails {
   college: string;
@@ -21,14 +21,14 @@ interface EducationState {
 const initialEducation: EducationDetails[] = [];
 
 const createEducationSlice: StateCreator<EducationState> = (set) => {
-  registerSliceReset(() => {
+  registerSliceClear(() => {
     set({ education: initialEducation });
   });
 
   return {
     addEducation: (newEducation: EducationDetails): void => {
       set((state) => ({
-        education: [...state.education, newEducation],
+        education: [newEducation, ...state.education],
       }));
     },
     education: initialEducation,

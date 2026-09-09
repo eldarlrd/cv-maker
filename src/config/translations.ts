@@ -14,7 +14,7 @@ const ACTIONS_AZE = {
   edit: 'Redaktə et',
   remove: 'Sil',
   reorder: 'Sırala',
-  reset: 'Sıfırla',
+  clear: 'Sıfırla',
 } as const;
 
 const SECTIONS_AZE = {

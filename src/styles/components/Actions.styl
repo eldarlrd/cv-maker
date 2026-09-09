@@ -13,7 +13,6 @@
     display inherit
     height 2.875rem
     font-size 1.25rem
-    min-width 9.25rem
     align-items center
     justify-content center
     border-radius border-curve
@@ -33,17 +32,19 @@
       &:hover:not(:disabled)
         background main-bg
 
-  #reset-btn
+  #clear-btn
+    aspect-ratio 1 / 1
     color main-bg
-    background main-reset
+    background main-clear
 
     @media (hover hover)
       &:hover
-        background hover-reset
+        background hover-clear
 
   #download-btn
     color main-bg
     background main-download
+    min-width 9.25rem
 
     @media (hover hover)
       &:hover

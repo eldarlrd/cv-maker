@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { registerSliceReset } from '$/sliceReset.ts';
+import { registerSliceClear } from '$/sliceClear.ts';
 
 interface ProjectDetails {
   id: string;
@@ -20,14 +20,14 @@ interface ProjectsState {
 const initialProjects: ProjectDetails[] = [];
 
 const createProjectsSlice: StateCreator<ProjectsState> = (set) => {
-  registerSliceReset(() => {
+  registerSliceClear(() => {
     set({ projects: initialProjects });
   });
 
   return {
     addProject: (newProject: ProjectDetails): void => {
       set((state) => ({
-        projects: [...state.projects, newProject],
+        projects: [newProject, ...state.projects],
       }));
     },
     projects: initialProjects,

@@ -15,7 +15,7 @@ const ACTIONS_ENG = {
   edit: 'Edit',
   remove: 'Remove',
   reorder: 'Reorder',
-  reset: 'Reset',
+  clear: 'Clear',
 } as const;
 
 const PERSONAL_ENG = {
