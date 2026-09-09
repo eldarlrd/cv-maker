@@ -28,7 +28,7 @@ export const Actions = ({
         max-width: 100svw !important;
         min-height: 100svh !important;
       }`,
-    // * Mobile Fix | Courtesy of https://github.com/sensasi-delight
+    // # Mobile Fix | Courtesy of https://github.com/sensasi-delight
     preserveAfterPrint: true,
     print: (printIframe) =>
       new Promise(() => {

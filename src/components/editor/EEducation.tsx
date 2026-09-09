@@ -90,7 +90,7 @@ export const EEducation = (): ReactElement => {
               id='college'
               maxLength={128}
               minLength={1}
-              onInput={handleEducationInput}
+              onChange={handleEducationInput}
               title=''
               type='text'
               value={educationObj.college}
@@ -104,7 +104,7 @@ export const EEducation = (): ReactElement => {
               id='major'
               maxLength={128}
               minLength={1}
-              onInput={handleEducationInput}
+              onChange={handleEducationInput}
               title=''
               type='text'
               value={educationObj.major}
@@ -122,7 +122,7 @@ export const EEducation = (): ReactElement => {
               id='degree'
               maxLength={128}
               minLength={1}
-              onInput={handleEducationInput}
+              onChange={handleEducationInput}
               title=''
               type='text'
               value={educationObj.degree}
@@ -138,7 +138,7 @@ export const EEducation = (): ReactElement => {
               id='startYear'
               maxLength={64}
               minLength={1}
-              onInput={handleEducationInput}
+              onChange={handleEducationInput}
               title=''
               type='text'
               value={educationObj.startYear}
@@ -154,7 +154,7 @@ export const EEducation = (): ReactElement => {
               id='endYear'
               maxLength={64}
               minLength={1}
-              onInput={handleEducationInput}
+              onChange={handleEducationInput}
               title=''
               type='text'
               value={educationObj.endYear}

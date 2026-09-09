@@ -1,4 +1,4 @@
-// * Easily Extendable
+// # Easily Extendable
 const SKILLSETS_ENG = {
   databases: 'Databases',
   languages: 'Languages',

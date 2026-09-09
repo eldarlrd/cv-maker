@@ -35,7 +35,7 @@ export const ESkills = (): ReactElement => {
               id={id}
               maxLength={1024}
               minLength={1}
-              onInput={handleSkillInput}
+              onChange={handleSkillInput}
               title=''
               type='text'
               value={skills[id as keyof typeof SKILLSETS_ENG]}

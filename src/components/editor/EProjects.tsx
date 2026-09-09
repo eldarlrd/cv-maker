@@ -94,7 +94,7 @@ export const EProjects = (): ReactElement => {
               id='projName'
               maxLength={128}
               minLength={1}
-              onInput={handleProjectInput}
+              onChange={handleProjectInput}
               title=''
               type='text'
               value={projectObj.projName}
@@ -111,7 +111,7 @@ export const EProjects = (): ReactElement => {
               id='projLink'
               maxLength={128}
               minLength={1}
-              onInput={handleProjectInput}
+              onChange={handleProjectInput}
               title=''
               type='text'
               value={projectObj.projLink}
@@ -127,7 +127,7 @@ export const EProjects = (): ReactElement => {
               id='stack'
               maxLength={256}
               minLength={1}
-              onInput={handleProjectInput}
+              onChange={handleProjectInput}
               title=''
               type='text'
               value={projectObj.stack}
@@ -144,7 +144,7 @@ export const EProjects = (): ReactElement => {
             id='projDescriptions'
             maxLength={4000}
             minLength={1}
-            onInput={handleProjDescriptionsInput}
+            onChange={handleProjDescriptionsInput}
             rows={6}
             spellCheck={false}
             title=''

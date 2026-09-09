@@ -14,7 +14,7 @@ interface ExperienceFieldProps {
   id: string;
   label: string;
   maxLength: number;
-  onInput: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
 }
 
@@ -22,7 +22,7 @@ const ExperienceField = ({
   id,
   label,
   maxLength,
-  onInput,
+  onChange,
   value,
 }: ExperienceFieldProps): ReactElement => (
   <span>
@@ -32,7 +32,7 @@ const ExperienceField = ({
       id={id}
       maxLength={maxLength}
       minLength={1}
-      onInput={onInput}
+      onChange={onChange}
       title=''
       type='text'
       value={value}
@@ -128,7 +128,7 @@ export const EExperience = (): ReactElement => {
             id='employer'
             label={isEnglish ? EXPERIENCE_ENG.employer : EXPERIENCE_AZE.employer}
             maxLength={128}
-            onInput={handleExperienceInput}
+            onChange={handleExperienceInput}
             value={experienceObj.employer}
           />
 
@@ -136,7 +136,7 @@ export const EExperience = (): ReactElement => {
             id='position'
             label={isEnglish ? EXPERIENCE_ENG.position : EXPERIENCE_AZE.position}
             maxLength={128}
-            onInput={handleExperienceInput}
+            onChange={handleExperienceInput}
             value={experienceObj.position}
           />
         </div>
@@ -146,7 +146,7 @@ export const EExperience = (): ReactElement => {
             id='location'
             label={isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
             maxLength={128}
-            onInput={handleExperienceInput}
+            onChange={handleExperienceInput}
             value={experienceObj.location}
           />
 
@@ -154,7 +154,7 @@ export const EExperience = (): ReactElement => {
             id='startDate'
             label={isEnglish ? EXPERIENCE_ENG.startDate : EXPERIENCE_AZE.startDate}
             maxLength={64}
-            onInput={handleExperienceInput}
+            onChange={handleExperienceInput}
             value={experienceObj.startDate}
           />
 
@@ -162,7 +162,7 @@ export const EExperience = (): ReactElement => {
             id='endDate'
             label={isEnglish ? EXPERIENCE_ENG.endDate : EXPERIENCE_AZE.endDate}
             maxLength={64}
-            onInput={handleExperienceInput}
+            onChange={handleExperienceInput}
             value={experienceObj.endDate}
           />
         </div>
@@ -175,7 +175,7 @@ export const EExperience = (): ReactElement => {
             id='descriptions'
             maxLength={4000}
             minLength={1}
-            onInput={handleDescriptionsInput}
+            onChange={handleDescriptionsInput}
             rows={6}
             spellCheck={false}
             title=''

@@ -48,7 +48,7 @@ export const EPerson = (): ReactElement => {
               id='name'
               maxLength={128}
               minLength={1}
-              onInput={handlePersonInput}
+              onChange={handlePersonInput}
               title=''
               type='text'
               value={person.name}
@@ -64,7 +64,7 @@ export const EPerson = (): ReactElement => {
               id='title'
               maxLength={128}
               minLength={1}
-              onInput={handlePersonInput}
+              onChange={handlePersonInput}
               title=''
               type='text'
               value={person.title}
@@ -80,7 +80,7 @@ export const EPerson = (): ReactElement => {
               id='email'
               maxLength={128}
               minLength={1}
-              onInput={handlePersonInput}
+              onChange={handlePersonInput}
               title=''
               type='email'
               value={person.email}
@@ -94,7 +94,7 @@ export const EPerson = (): ReactElement => {
               id='phone'
               maxLength={18}
               minLength={9}
-              onInput={handlePersonInput}
+              onChange={handlePersonInput}
               pattern='^(\+?\d{1,3}\s?)?(\(\d{2,3}\)|\d{2,3})[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$'
               title=''
               type='tel'
@@ -111,7 +111,7 @@ export const EPerson = (): ReactElement => {
               id='address'
               maxLength={128}
               minLength={1}
-              onInput={handlePersonInput}
+              onChange={handlePersonInput}
               title=''
               type='address'
               value={person.address}
@@ -128,7 +128,7 @@ export const EPerson = (): ReactElement => {
               id='Portfolio'
               maxLength={256}
               minLength={1}
-              onInput={handleLinkInput}
+              onChange={handleLinkInput}
               title=''
               type='text'
               value={person.links.Portfolio}
@@ -143,7 +143,7 @@ export const EPerson = (): ReactElement => {
               id='GitHub'
               maxLength={256}
               minLength={1}
-              onInput={handleLinkInput}
+              onChange={handleLinkInput}
               title=''
               type='text'
               value={person.links.GitHub}
@@ -158,7 +158,7 @@ export const EPerson = (): ReactElement => {
               id='LinkedIn'
               maxLength={256}
               minLength={1}
-              onInput={handleLinkInput}
+              onChange={handleLinkInput}
               title=''
               type='text'
               value={person.links.LinkedIn}

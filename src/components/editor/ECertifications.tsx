@@ -89,7 +89,7 @@ export const ECertifications = (): ReactElement => {
               id='certTitle'
               maxLength={128}
               minLength={1}
-              onInput={handleCertificationInput}
+              onChange={handleCertificationInput}
               title=''
               type='text'
               value={certificationObj.certTitle}
@@ -107,7 +107,7 @@ export const ECertifications = (): ReactElement => {
               id='issuer'
               maxLength={128}
               minLength={1}
-              onInput={handleCertificationInput}
+              onChange={handleCertificationInput}
               title=''
               type='text'
               value={certificationObj.issuer}
@@ -124,7 +124,7 @@ export const ECertifications = (): ReactElement => {
               id='link'
               maxLength={128}
               minLength={1}
-              onInput={handleCertificationInput}
+              onChange={handleCertificationInput}
               title=''
               type='text'
               value={certificationObj.link}
