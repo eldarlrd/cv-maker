@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 
-import { SECTIONS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
+import { SECTIONS_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const PEducation = (): ReactElement => {
   const section = 'Education';

@@ -15,7 +15,12 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": { "@/*": ["./src/*"] },
+    "paths": {
+	    "@/*": ["./src/*"],
+	    "#/*": ["./src/config/*"],
+	    "%/*": ["./src/models/*"],
+	    "$/*": ["./src/slices/*"]
+    },
     // Linting
     "strict": true,
     "noUnusedLocals": true,

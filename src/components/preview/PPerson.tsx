@@ -17,31 +17,33 @@ export const PPerson = (): ReactElement => {
 
   const hasLinkInfo = Object.values(person.links).some((link: string) => link.trim());
 
-  const contactInfo: ReactElement[] = [];
+  const contactInfo: { content: ReactElement | string; id: string }[] = [];
 
   if (person.email) {
-    contactInfo.push(
-      <a href={mailToUrl} key='email' rel='noreferrer' title={mailToUrl}>
-        {person.email}
-      </a>
-    );
+    contactInfo.push({
+      content: (
+        <a href={mailToUrl} key='email' rel='noreferrer' title={mailToUrl}>
+          {person.email}
+        </a>
+      ),
+      id: 'email',
+    });
   }
 
-  if (person.phone) contactInfo.push(person.phone);
-
-  if (person.address) contactInfo.push(person.address);
+  if (person.phone) contactInfo.push({ content: person.phone, id: 'phone' });
+  if (person.address) contactInfo.push({ content: person.address, id: 'address' });
 
   return (
     <div id='person'>
-      {(hasPersonInfo || hasLinkInfo) && (
+      {hasPersonInfo || hasLinkInfo ? (
         <>
           <h1>{person.name}</h1>
           <h2>{person.title}</h2>
 
           <h3>
-            {contactInfo.map((element, i) => (
-              <span key={i}>
-                {element}
+            {contactInfo.map(({ content, id }, i) => (
+              <span key={id}>
+                {content}
                 {i < contactInfo.length - 1 && ' | '}
               </span>
             ))}
@@ -61,7 +63,7 @@ export const PPerson = (): ReactElement => {
           </h4>
           <hr />
         </>
-      )}
+      ) : null}
     </div>
   );
 };

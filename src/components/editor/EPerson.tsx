@@ -2,11 +2,11 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ChangeEvent, ReactElement } from 'react';
 
+import { PERSONAL_ENG } from '#/fields.ts';
+import { PERSONAL_AZE } from '#/translations.ts';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
-import { PERSONAL_ENG } from '@/config/fields.ts';
-import { PERSONAL_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const EPerson = (): ReactElement => {
   const section = 'Personal';

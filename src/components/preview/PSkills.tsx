@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react';
 
-import { SKILLSETS_ENG } from '@/config/fields.ts';
-import { SECTIONS_AZE, SKILLSETS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
+import { SKILLSETS_ENG } from '#/fields.ts';
+import { SECTIONS_AZE, SKILLSETS_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const PSkills = (): ReactElement => {
   const section = 'Skills';

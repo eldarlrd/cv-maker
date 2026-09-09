@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const Header = (): ReactElement => {
   const { language, switchLanguage } = useStore();

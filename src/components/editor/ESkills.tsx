@@ -1,10 +1,10 @@
 import type { ChangeEvent, ReactElement } from 'react';
 
+import { SKILLSETS_ENG } from '#/fields.ts';
+import { SKILLSETS_AZE } from '#/translations.ts';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
-import { SKILLSETS_ENG } from '@/config/fields.ts';
-import { SKILLSETS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const ESkills = (): ReactElement => {
   const section = 'Skills';

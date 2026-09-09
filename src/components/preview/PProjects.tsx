@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react';
 
-import { PROJECTS_ENG } from '@/config/fields.ts';
-import { PROJECTS_AZE, SECTIONS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
+import { PROJECTS_ENG } from '#/fields.ts';
+import { PROJECTS_AZE, SECTIONS_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const PProjects = (): ReactElement => {
   const section = 'Projects';
@@ -26,14 +26,14 @@ export const PProjects = (): ReactElement => {
               <span>
                 <h2>
                   {project.projName}
-                  {project.projLink && (
+                  {project.projLink ? (
                     <>
                       {divider}
                       <a href={project.projLink} rel='noreferrer' title={project.projLink}>
                         {isEnglish ? PROJECTS_ENG.link : PROJECTS_AZE.link}
                       </a>
                     </>
-                  )}
+                  ) : null}
                 </h2>
 
                 <h3>{project.stack.trim()}</h3>

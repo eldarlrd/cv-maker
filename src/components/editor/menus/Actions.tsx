@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement, RefObject } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-import { ACTIONS_ENG } from '@/config/fields.ts';
-import { ACTIONS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
-import { useResetStore, useStore } from '@/store.ts';
+import { ACTIONS_ENG } from '#/fields.ts';
+import { ACTIONS_AZE } from '#/translations.ts';
+import { resetStore, useStore } from '@/store.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const Actions = ({
   printRef,
@@ -41,7 +41,7 @@ export const Actions = ({
 
   return (
     <div id='actions'>
-      <button className='action-btn' id='reset-btn' onClick={useResetStore} type='button'>
+      <button className='action-btn' id='reset-btn' onClick={resetStore} type='button'>
         <FontAwesomeIcon icon={faRotate} /> {isEnglish ? ACTIONS_ENG.reset : ACTIONS_AZE.reset}
       </button>
 

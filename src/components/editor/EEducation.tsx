@@ -1,13 +1,14 @@
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
 
-import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { ACTIONS_ENG, EDUCATION_ENG } from '#/fields.ts';
+import { ACTIONS_AZE, EDUCATION_AZE } from '#/translations.ts';
+import { DndList } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
-import { ACTIONS_ENG, EDUCATION_ENG } from '@/config/fields.ts';
-import { ACTIONS_AZE, EDUCATION_AZE } from '@/config/translations.ts';
-import type { EducationDetails } from '@/slices/educationSlice.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import type { ListProps } from '%/dndList.model.ts';
+import type { EducationDetails } from '$/educationSlice.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const EEducation = (): ReactElement => {
   const section = 'Education';

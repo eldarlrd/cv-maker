@@ -4,21 +4,7 @@ import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-ki
 import type { ReactElement } from 'react';
 
 import { ListItem } from '@/components/editor/menus/ListItem.tsx';
-import type { CertificationDetails } from '@/slices/certificationsSlice.ts';
-import type { EducationDetails } from '@/slices/educationSlice.ts';
-import type { ExperienceDetails } from '@/slices/experienceSlice.ts';
-import type { ProjectDetails } from '@/slices/projectsSlice.ts';
-
-interface ListItemProps {
-  id: string;
-  name: string;
-}
-
-interface ListProps
-  extends ExperienceDetails,
-    EducationDetails,
-    ProjectDetails,
-    CertificationDetails {}
+import type { ListProps } from '%/dndList.model.ts';
 
 interface DndListProps {
   handleEdit: (id: string) => void;
@@ -79,4 +65,4 @@ const DndList = ({
   );
 };
 
-export { DndList, type ListItemProps, type ListProps };
+export { DndList };

@@ -4,11 +4,11 @@ import { faGripVertical, faPencil, faTrash } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement } from 'react';
 
-import type { ListItemProps } from '@/components/editor/menus/DndList.tsx';
-import { ACTIONS_ENG } from '@/config/fields.ts';
-import { ACTIONS_AZE } from '@/config/translations.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
+import { ACTIONS_ENG } from '#/fields.ts';
+import { ACTIONS_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
+import type { ListItemProps } from '%/dndList.model.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const ListItem = ({
   item,

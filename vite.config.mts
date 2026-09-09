@@ -23,5 +23,12 @@ export default defineConfig({
       strategies: 'injectManifest',
     }),
   ],
-  resolve: { alias: { '@': '/src' } },
+  resolve: {
+    alias: {
+      '@': '/src',
+      '#': '/src/config',
+      '%': '/src/models',
+      '$': '/src/slices',
+    }
+  },
 });

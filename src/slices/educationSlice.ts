@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { useSliceReset } from '@/store.ts';
+import { registerSliceReset } from '$/sliceReset.ts';
 
 interface EducationDetails {
   college: string;
@@ -20,11 +20,12 @@ interface EducationState {
 
 const initialEducation: EducationDetails[] = [];
 
-const createEducationSlice: StateCreator<EducationState> = (set) => (
-  useSliceReset.add(() => {
+const createEducationSlice: StateCreator<EducationState> = (set) => {
+  registerSliceReset(() => {
     set({ education: initialEducation });
-  }),
-  {
+  });
+
+  return {
     addEducation: (newEducation: EducationDetails): void => {
       set((state) => ({
         education: [...state.education, newEducation],
@@ -40,7 +41,7 @@ const createEducationSlice: StateCreator<EducationState> = (set) => (
     sortEducation: (sortedEducation: EducationDetails[]): void => {
       set({ education: sortedEducation });
     },
-  }
-);
+  };
+};
 
 export { type EducationDetails, type EducationState, createEducationSlice };

@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
 
-import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '#/fields.ts';
+import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '#/translations.ts';
+import { DndList } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
-import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '@/config/fields.ts';
-import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '@/config/translations.ts';
-import type { CertificationDetails } from '@/slices/certificationsSlice.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import type { ListProps } from '%/dndList.model.ts';
+import type { CertificationDetails } from '$/certificationsSlice.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
 
 export const ECertifications = (): ReactElement => {
   const section = 'Certifications';

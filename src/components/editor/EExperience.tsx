@@ -1,13 +1,44 @@
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
 
-import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { ACTIONS_ENG, EXPERIENCE_ENG } from '#/fields.ts';
+import { ACTIONS_AZE, EXPERIENCE_AZE } from '#/translations.ts';
+import { DndList } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
-import { ACTIONS_ENG, EXPERIENCE_ENG } from '@/config/fields.ts';
-import { ACTIONS_AZE, EXPERIENCE_AZE } from '@/config/translations.ts';
-import type { ExperienceDetails } from '@/slices/experienceSlice.ts';
-import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
+import type { ListProps } from '%/dndList.model.ts';
+import type { ExperienceDetails } from '$/experienceSlice.ts';
+import { LANGUAGES } from '$/languageSlice.ts';
+
+interface ExperienceFieldProps {
+  id: string;
+  label: string;
+  maxLength: number;
+  onInput: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}
+
+const ExperienceField = ({
+  id,
+  label,
+  maxLength,
+  onInput,
+  value,
+}: ExperienceFieldProps): ReactElement => (
+  <span>
+    <label htmlFor={id}>{label}</label>
+    <input
+      autoCapitalize='words'
+      id={id}
+      maxLength={maxLength}
+      minLength={1}
+      onInput={onInput}
+      title=''
+      type='text'
+      value={value}
+    />
+  </span>
+);
 
 export const EExperience = (): ReactElement => {
   const section = 'Experience';
@@ -93,87 +124,47 @@ export const EExperience = (): ReactElement => {
         />
 
         <div className='two-column'>
-          <span>
-            <label htmlFor='employer'>
-              {isEnglish ? EXPERIENCE_ENG.employer : EXPERIENCE_AZE.employer}
-            </label>
-            <input
-              autoCapitalize='words'
-              id='employer'
-              maxLength={128}
-              minLength={1}
-              onInput={handleExperienceInput}
-              title=''
-              type='text'
-              value={experienceObj.employer}
-            />
-          </span>
+          <ExperienceField
+            id='employer'
+            label={isEnglish ? EXPERIENCE_ENG.employer : EXPERIENCE_AZE.employer}
+            maxLength={128}
+            onInput={handleExperienceInput}
+            value={experienceObj.employer}
+          />
 
-          <span>
-            <label htmlFor='position'>
-              {isEnglish ? EXPERIENCE_ENG.position : EXPERIENCE_AZE.position}
-            </label>
-            <input
-              autoCapitalize='words'
-              id='position'
-              maxLength={128}
-              minLength={1}
-              onInput={handleExperienceInput}
-              title=''
-              type='text'
-              value={experienceObj.position}
-            />
-          </span>
+          <ExperienceField
+            id='position'
+            label={isEnglish ? EXPERIENCE_ENG.position : EXPERIENCE_AZE.position}
+            maxLength={128}
+            onInput={handleExperienceInput}
+            value={experienceObj.position}
+          />
         </div>
 
         <div className='three-column'>
-          <span>
-            <label htmlFor='location'>
-              {isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
-            </label>
-            <input
-              autoCapitalize='words'
-              id='location'
-              maxLength={128}
-              minLength={1}
-              onInput={handleExperienceInput}
-              title=''
-              type='text'
-              value={experienceObj.location}
-            />
-          </span>
+          <ExperienceField
+            id='location'
+            label={isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
+            maxLength={128}
+            onInput={handleExperienceInput}
+            value={experienceObj.location}
+          />
 
-          <span>
-            <label htmlFor='startDate'>
-              {isEnglish ? EXPERIENCE_ENG.startDate : EXPERIENCE_AZE.startDate}
-            </label>
-            <input
-              autoCapitalize='words'
-              id='startDate'
-              maxLength={64}
-              minLength={1}
-              onInput={handleExperienceInput}
-              title=''
-              type='text'
-              value={experienceObj.startDate}
-            />
-          </span>
+          <ExperienceField
+            id='startDate'
+            label={isEnglish ? EXPERIENCE_ENG.startDate : EXPERIENCE_AZE.startDate}
+            maxLength={64}
+            onInput={handleExperienceInput}
+            value={experienceObj.startDate}
+          />
 
-          <span>
-            <label htmlFor='endDate'>
-              {isEnglish ? EXPERIENCE_ENG.endDate : EXPERIENCE_AZE.endDate}
-            </label>
-            <input
-              autoCapitalize='words'
-              id='endDate'
-              maxLength={64}
-              minLength={1}
-              onInput={handleExperienceInput}
-              title=''
-              type='text'
-              value={experienceObj.endDate}
-            />
-          </span>
+          <ExperienceField
+            id='endDate'
+            label={isEnglish ? EXPERIENCE_ENG.endDate : EXPERIENCE_AZE.endDate}
+            maxLength={64}
+            onInput={handleExperienceInput}
+            value={experienceObj.endDate}
+          />
         </div>
 
         <span>

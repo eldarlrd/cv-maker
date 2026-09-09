@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { useSliceReset } from '@/store.ts';
+import { registerSliceReset } from '$/sliceReset.ts';
 
 interface CertificationDetails {
   certTitle: string;
@@ -18,11 +18,12 @@ interface CertificationsState {
 
 const initialCertifications: CertificationDetails[] = [];
 
-const createCertificationsSlice: StateCreator<CertificationsState> = (set) => (
-  useSliceReset.add(() => {
+const createCertificationsSlice: StateCreator<CertificationsState> = (set) => {
+  registerSliceReset(() => {
     set({ certifications: initialCertifications });
-  }),
-  {
+  });
+
+  return {
     addCertification: (newCertification: CertificationDetails): void => {
       set((state) => ({
         certifications: [...state.certifications, newCertification],
@@ -38,7 +39,7 @@ const createCertificationsSlice: StateCreator<CertificationsState> = (set) => (
     sortCertifications: (sortedCertifications: CertificationDetails[]): void => {
       set({ certifications: sortedCertifications });
     },
-  }
-);
+  };
+};
 
 export { type CertificationDetails, type CertificationsState, createCertificationsSlice };

@@ -1,25 +1,15 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import {
-  type CertificationsState,
-  createCertificationsSlice,
-} from '@/slices/certificationsSlice.ts';
-import { type EducationState, createEducationSlice } from '@/slices/educationSlice.ts';
-import { type ExperienceState, createExperienceSlice } from '@/slices/experienceSlice.ts';
-import { type LanguageState, createLanguageSlice } from '@/slices/languageSlice.ts';
-import { type OpenMenusState, createOpenMenusSlice } from '@/slices/openMenusSlice.ts';
-import { type PersonState, createPersonSlice } from '@/slices/personSlice.ts';
-import { type ProjectsState, createProjectsSlice } from '@/slices/projectsSlice.ts';
-import { type SkillsState, createSkillsSlice } from '@/slices/skillsSlice.ts';
-
-const useSliceReset = new Set<() => void>();
-
-const useResetStore = (): void => {
-  useSliceReset.forEach((resetSlice) => {
-    resetSlice();
-  });
-};
+import { type CertificationsState, createCertificationsSlice } from '$/certificationsSlice.ts';
+import { type EducationState, createEducationSlice } from '$/educationSlice.ts';
+import { type ExperienceState, createExperienceSlice } from '$/experienceSlice.ts';
+import { type LanguageState, createLanguageSlice } from '$/languageSlice.ts';
+import { type OpenMenusState, createOpenMenusSlice } from '$/openMenusSlice.ts';
+import { type PersonState, createPersonSlice } from '$/personSlice.ts';
+import { type ProjectsState, createProjectsSlice } from '$/projectsSlice.ts';
+import { type SkillsState, createSkillsSlice } from '$/skillsSlice.ts';
+import { resetStore } from '$/sliceReset.ts';
 
 interface StoreState
   extends PersonState,
@@ -47,4 +37,4 @@ const useStore = create<StoreState>()(
   )
 );
 
-export { useResetStore, useSliceReset, useStore };
+export { resetStore, useStore };

@@ -1,6 +1,6 @@
 import type { StateCreator } from 'zustand';
 
-import { useSliceReset } from '@/store.ts';
+import { registerSliceReset } from '$/sliceReset.ts';
 
 interface SkillsDetails {
   databases: string;
@@ -23,11 +23,12 @@ const initialSkills: SkillsDetails = {
   toolPlat: '',
 };
 
-const createSkillsSlice: StateCreator<SkillsState> = (set) => (
-  useSliceReset.add(() => {
+const createSkillsSlice: StateCreator<SkillsState> = (set) => {
+  registerSliceReset(() => {
     set({ skills: initialSkills });
-  }),
-  {
+  });
+
+  return {
     setSkill: (updatedSkills: Partial<SkillsDetails>): void => {
       set({
         skills: {
@@ -37,7 +38,7 @@ const createSkillsSlice: StateCreator<SkillsState> = (set) => (
       });
     },
     skills: { ...initialSkills },
-  }
-);
+  };
+};
 
 export { type SkillsState, createSkillsSlice };
