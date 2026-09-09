@@ -39,9 +39,7 @@ export const EPerson = (): ReactElement => {
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <div className='two-column'>
           <span>
-            <label htmlFor='name'>
-              {isEnglish ? PERSONAL_ENG.fullName : PERSONAL_AZE.fullName}
-            </label>
+            <label htmlFor='name'>{isEnglish ? PERSONAL_ENG.name : PERSONAL_AZE.name}</label>
             <input
               autoCapitalize='words'
               autoComplete='on'

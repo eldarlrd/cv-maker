@@ -2,7 +2,7 @@
 
 // # Easily Extendable
 const SKILLSETS_ENG = {
-  progLang: 'Programming Languages',
+  progLang: 'Programming languages',
   libFrame: 'Libraries / Frameworks',
   toolPlat: 'Tools / Platforms',
   databases: 'Databases',
@@ -20,7 +20,7 @@ const ACTIONS_ENG = {
 
 const PERSONAL_ENG = {
   address: 'Address',
-  fullName: 'Full Name',
+  name: 'Name',
   phone: 'Phone',
   profession: 'Profession',
 } as const;

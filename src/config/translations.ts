@@ -1,10 +1,10 @@
 // biome-ignore-all assist/source/useSortedKeys: intended order
 
 const SKILLSETS_AZE = {
-  progLang: 'Proqramlaşdırma Dilləri',
+  progLang: 'Proqramlaşdırma dilləri',
   libFrame: 'Kitabxanalar / Freymvorklar',
   toolPlat: 'Alətlər / Platformalar',
-  databases: 'Data Bazalar',
+  databases: 'Databazalar',
   languages: 'Dillər',
 } as const;
 
@@ -28,7 +28,7 @@ const SECTIONS_AZE = {
 
 const PERSONAL_AZE = {
   address: 'Ünvan',
-  fullName: 'Ad',
+  name: 'Ad',
   phone: 'Telefon',
   profession: 'Peşə',
 } as const;
@@ -43,7 +43,7 @@ const EXPERIENCE_AZE = {
 } as const;
 
 const EDUCATION_AZE = {
-  college: 'Təhsil Müəssisəsi',
+  college: 'Müəssisə',
   degree: 'Dərəcə',
   endYear: 'Bitirmə ili',
   major: 'İxtisas',
