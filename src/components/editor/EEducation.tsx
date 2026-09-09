@@ -5,63 +5,58 @@ import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { ACTIONS_ENG, EDUCATION_ENG } from '@/config/fields.ts';
 import { ACTIONS_AZE, EDUCATION_AZE } from '@/config/translations.ts';
-import { type EducationDetails } from '@/slices/educationSlice.ts';
+import type { EducationDetails } from '@/slices/educationSlice.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EEducation = (): ReactElement => {
   const section = 'Education';
-  const {
-    education,
-    sortEducation,
-    addEducation,
-    removeEducation,
-    openMenus,
-    language
-  } = useStore();
+  const { education, sortEducation, addEducation, removeEducation, openMenus, language } =
+    useStore();
   const isVisible = openMenus.includes(section);
 
   const [educationObj, setEducationObj] = useState<EducationDetails>({
-    id: '',
     college: '',
-    major: '',
     degree: '',
+    endYear: '',
+    id: '',
+    major: '',
     startYear: '',
-    endYear: ''
   });
 
-  const isDisabled =
-    !educationObj.college ||
-    !educationObj.major ||
-    !educationObj.degree ||
-    !educationObj.startYear;
+  const isDisabled = !(
+    educationObj.college &&
+    educationObj.major &&
+    educationObj.degree &&
+    educationObj.startYear
+  );
 
   const handleEducationInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
 
-    setEducationObj(prevObj => ({
+    setEducationObj((prevObj) => ({
       ...prevObj,
-      [id]: value
+      [id]: value,
     }));
   };
 
   const handleAddEducation = (): void => {
     addEducation({
       ...educationObj,
-      id: nanoid()
+      id: nanoid(),
     });
     setEducationObj({
-      id: '',
       college: '',
-      major: '',
       degree: '',
+      endYear: '',
+      id: '',
+      major: '',
       startYear: '',
-      endYear: ''
     });
   };
 
   const editEducation = (id: string): void => {
-    const educationToEdit = education.find(e => e.id === id);
+    const educationToEdit = education.find((e) => e.id === id);
 
     if (educationToEdit) {
       setEducationObj(educationToEdit);
@@ -73,15 +68,15 @@ export const EEducation = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton section={section} isVisible={isVisible} />
+      <DrawerButton isVisible={isVisible} section={section} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <DndList
-          nameKey='major'
-          itemArr={education as ListProps[]}
-          handleSort={sortEducation}
           handleEdit={editEducation}
           handleRemove={removeEducation}
+          handleSort={sortEducation}
+          itemArr={education as ListProps[]}
+          nameKey='major'
         />
 
         <div className='two-column'>
@@ -90,30 +85,28 @@ export const EEducation = (): ReactElement => {
               {isEnglish ? EDUCATION_ENG.college : EDUCATION_AZE.college}
             </label>
             <input
+              autoCapitalize='words'
+              id='college'
+              maxLength={128}
+              minLength={1}
+              onInput={handleEducationInput}
               title=''
               type='text'
-              id='college'
-              minLength={1}
-              maxLength={128}
               value={educationObj.college}
-              onInput={handleEducationInput}
-              autoCapitalize='words'
             />
           </span>
 
           <span>
-            <label htmlFor='major'>
-              {isEnglish ? EDUCATION_ENG.major : EDUCATION_AZE.major}
-            </label>
+            <label htmlFor='major'>{isEnglish ? EDUCATION_ENG.major : EDUCATION_AZE.major}</label>
             <input
+              autoCapitalize='words'
+              id='major'
+              maxLength={128}
+              minLength={1}
+              onInput={handleEducationInput}
               title=''
               type='text'
-              id='major'
-              minLength={1}
-              maxLength={128}
               value={educationObj.major}
-              onInput={handleEducationInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
@@ -124,14 +117,14 @@ export const EEducation = (): ReactElement => {
               {isEnglish ? EDUCATION_ENG.degree : EDUCATION_AZE.degree}
             </label>
             <input
+              autoCapitalize='words'
+              id='degree'
+              maxLength={128}
+              minLength={1}
+              onInput={handleEducationInput}
               title=''
               type='text'
-              id='degree'
-              minLength={1}
-              maxLength={128}
               value={educationObj.degree}
-              onInput={handleEducationInput}
-              autoCapitalize='words'
             />
           </span>
 
@@ -140,14 +133,14 @@ export const EEducation = (): ReactElement => {
               {isEnglish ? EDUCATION_ENG.startYear : EDUCATION_AZE.startYear}
             </label>
             <input
+              autoCapitalize='words'
+              id='startYear'
+              maxLength={64}
+              minLength={1}
+              onInput={handleEducationInput}
               title=''
               type='text'
-              id='startYear'
-              minLength={1}
-              maxLength={64}
               value={educationObj.startYear}
-              onInput={handleEducationInput}
-              autoCapitalize='words'
             />
           </span>
 
@@ -156,23 +149,23 @@ export const EEducation = (): ReactElement => {
               {isEnglish ? EDUCATION_ENG.endYear : EDUCATION_AZE.endYear}
             </label>
             <input
+              autoCapitalize='words'
+              id='endYear'
+              maxLength={64}
+              minLength={1}
+              onInput={handleEducationInput}
               title=''
               type='text'
-              id='endYear'
-              minLength={1}
-              maxLength={64}
               value={educationObj.endYear}
-              onInput={handleEducationInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
 
         <button
-          type='button'
           className='add-btn'
+          disabled={isDisabled}
           onClick={handleAddEducation}
-          disabled={isDisabled}>
+          type='button'>
           {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>

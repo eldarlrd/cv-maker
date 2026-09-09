@@ -1,14 +1,10 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import {
-  faGripVertical,
-  faPencil,
-  faTrash
-} from '@fortawesome/free-solid-svg-icons';
+import { faGripVertical, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { type ListItemProps } from '@/components/editor/menus/DndList.tsx';
+import type { ListItemProps } from '@/components/editor/menus/DndList.tsx';
 import { ACTIONS_ENG } from '@/config/fields.ts';
 import { ACTIONS_AZE } from '@/config/translations.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
@@ -17,7 +13,7 @@ import { useStore } from '@/store.ts';
 export const ListItem = ({
   item,
   handleEdit,
-  handleRemove
+  handleRemove,
 }: {
   item: ListItemProps;
   handleEdit: () => void;
@@ -27,22 +23,21 @@ export const ListItem = ({
   const id = item.id;
 
   // Drag & Drop Movement
-  const { setNodeRef, listeners, transition, transform, isDragging } =
-    useSortable({
-      id
-    });
+  const { setNodeRef, listeners, transition, transform, isDragging } = useSortable({
+    id,
+  });
 
   const style = {
+    transform: CSS.Translate.toString(transform),
     transition,
-    transform: CSS.Translate.toString(transform)
   };
 
   const isEnglish = language === LANGUAGES.English;
 
   return (
     <div
-      id={id}
       className={`${isDragging ? 'dragging' : ''} list-item`}
+      id={id}
       ref={setNodeRef}
       style={style}>
       <span>
@@ -60,17 +55,17 @@ export const ListItem = ({
       <span>
         <button
           id='edit-btn'
+          onClick={handleEdit}
           title={isEnglish ? ACTIONS_ENG.edit : ACTIONS_AZE.edit}
-          type='button'
-          onClick={handleEdit}>
+          type='button'>
           <FontAwesomeIcon icon={faPencil} />
         </button>
 
         <button
           id='trash-btn'
+          onClick={handleRemove}
           title={isEnglish ? ACTIONS_ENG.remove : ACTIONS_AZE.remove}
-          type='button'
-          onClick={handleRemove}>
+          type='button'>
           <FontAwesomeIcon icon={faTrash} />
         </button>
       </span>

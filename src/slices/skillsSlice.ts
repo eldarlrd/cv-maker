@@ -1,42 +1,42 @@
-import { type StateCreator } from 'zustand';
+import type { StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
 
 interface SkillsDetails {
-  progLang: string;
-  libFrame: string;
-  toolPlat: string;
   databases: string;
   languages: string;
+  libFrame: string;
+  progLang: string;
+  toolPlat: string;
 }
 
 interface SkillsState {
-  skills: SkillsDetails;
   setSkill: (updatedSkills: Partial<SkillsDetails>) => void;
+  skills: SkillsDetails;
 }
 
 const initialSkills: SkillsDetails = {
-  progLang: '',
-  libFrame: '',
-  toolPlat: '',
   databases: '',
-  languages: ''
+  languages: '',
+  libFrame: '',
+  progLang: '',
+  toolPlat: '',
 };
 
-const createSkillsSlice: StateCreator<SkillsState> = set => (
+const createSkillsSlice: StateCreator<SkillsState> = (set) => (
   useSliceReset.add(() => {
     set({ skills: initialSkills });
   }),
   {
-    skills: { ...initialSkills },
     setSkill: (updatedSkills: Partial<SkillsDetails>): void => {
       set({
         skills: {
           ...initialSkills,
-          ...updatedSkills
-        }
+          ...updatedSkills,
+        },
       });
-    }
+    },
+    skills: { ...initialSkills },
   }
 );
 

@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
@@ -15,24 +15,24 @@ export const Header = (): ReactElement => {
   return (
     <header>
       <button
-        type='button'
         className={isEnglish ? 'active-lang' : ''}
-        title='English'
-        onClick={() => {
+        onClick={(): void => {
           toggleLanguage(LANGUAGES.English);
-        }}>
+        }}
+        title='English'
+        type='button'>
         🇬🇧
       </button>
 
       <span>CV Maker</span>
 
       <button
-        type='button'
         className={isEnglish ? '' : 'active-lang'}
-        title='Azərbaycanca'
-        onClick={() => {
+        onClick={(): void => {
           toggleLanguage(LANGUAGES.Azerbaijani);
-        }}>
+        }}
+        title='Azərbaycanca'
+        type='button'>
         🇦🇿
       </button>
     </header>

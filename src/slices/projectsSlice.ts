@@ -1,45 +1,44 @@
-import { type StateCreator } from 'zustand';
+import type { StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
 
 interface ProjectDetails {
   id: string;
-  projName: string;
-  projLink: string;
-  stack: string;
   projDescriptions: string[];
+  projLink: string;
+  projName: string;
+  stack: string;
 }
 
 interface ProjectsState {
-  projects: ProjectDetails[];
-  sortProjects: (sortedProjects: ProjectDetails[]) => void;
   addProject: (newProject: ProjectDetails) => void;
+  projects: ProjectDetails[];
   removeProject: (id: string) => void;
+  sortProjects: (sortedProjects: ProjectDetails[]) => void;
 }
 
 const initialProjects: ProjectDetails[] = [];
 
-const createProjectsSlice: StateCreator<ProjectsState> = set => (
+const createProjectsSlice: StateCreator<ProjectsState> = (set) => (
   useSliceReset.add(() => {
     set({ projects: initialProjects });
   }),
   {
-    projects: initialProjects,
-    sortProjects: (sortedProjects: ProjectDetails[]): void => {
-      set({ projects: sortedProjects });
-    },
-
     addProject: (newProject: ProjectDetails): void => {
-      set(state => ({
-        projects: [...state.projects, newProject]
+      set((state) => ({
+        projects: [...state.projects, newProject],
       }));
     },
+    projects: initialProjects,
 
     removeProject: (id: string): void => {
       set((state: ProjectsState) => ({
-        projects: state.projects.filter(project => project.id !== id)
+        projects: state.projects.filter((project) => project.id !== id),
       }));
-    }
+    },
+    sortProjects: (sortedProjects: ProjectDetails[]): void => {
+      set({ projects: sortedProjects });
+    },
   }
 );
 

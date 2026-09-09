@@ -1,7 +1,7 @@
 /**
  * @license AGPL-3.0-only
  * CV Maker - A Resume Builder
- * Copyright (C) 2024-2025 Eldar Pashazade <eldarlrd@pm.me>
+ * Copyright (C) 2024-2026 Eldar Paşazadə <eldarlrd@pm.me>
  *
  * This file is part of CV Maker.
  *
@@ -37,7 +37,7 @@ const registerSW = (): void => {
     window.addEventListener('load', () => {
       navigator.serviceWorker
         .register('/cv-maker/sw.js', {
-          scope: '/cv-maker/'
+          scope: '/cv-maker/',
         })
         .catch((error: unknown) => {
           if (error instanceof Error) console.error(error);
@@ -46,3 +46,6 @@ const registerSW = (): void => {
 };
 
 registerSW();
+
+// Easter Egg
+console.log('"Hard work never killed anybody, but why take a chance?" - Edgar Bergen');

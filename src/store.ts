@@ -3,35 +3,20 @@ import { persist } from 'zustand/middleware';
 
 import {
   type CertificationsState,
-  createCertificationsSlice
+  createCertificationsSlice,
 } from '@/slices/certificationsSlice.ts';
-import {
-  type EducationState,
-  createEducationSlice
-} from '@/slices/educationSlice.ts';
-import {
-  type ExperienceState,
-  createExperienceSlice
-} from '@/slices/experienceSlice.ts';
-import {
-  createLanguageSlice,
-  type LanguageState
-} from '@/slices/languageSlice.ts';
-import {
-  type OpenMenusState,
-  createOpenMenusSlice
-} from '@/slices/openMenusSlice.ts';
+import { type EducationState, createEducationSlice } from '@/slices/educationSlice.ts';
+import { type ExperienceState, createExperienceSlice } from '@/slices/experienceSlice.ts';
+import { type LanguageState, createLanguageSlice } from '@/slices/languageSlice.ts';
+import { type OpenMenusState, createOpenMenusSlice } from '@/slices/openMenusSlice.ts';
 import { type PersonState, createPersonSlice } from '@/slices/personSlice.ts';
-import {
-  type ProjectsState,
-  createProjectsSlice
-} from '@/slices/projectsSlice.ts';
+import { type ProjectsState, createProjectsSlice } from '@/slices/projectsSlice.ts';
 import { type SkillsState, createSkillsSlice } from '@/slices/skillsSlice.ts';
 
 const useSliceReset = new Set<() => void>();
 
 const useResetStore = (): void => {
-  useSliceReset.forEach(resetSlice => {
+  useSliceReset.forEach((resetSlice) => {
     resetSlice();
   });
 };
@@ -56,7 +41,7 @@ const useStore = create<StoreState>()(
       ...createProjectsSlice(...a),
       ...createCertificationsSlice(...a),
       ...createOpenMenusSlice(...a),
-      ...createLanguageSlice(...a)
+      ...createLanguageSlice(...a),
     }),
     { name: 'store' }
   )

@@ -22,8 +22,3 @@ export const App = (): ReactElement => {
     </>
   );
 };
-
-// Easter Egg
-console.log(
-  '"Hard work never killed anybody, but why take a chance?" - Edgar Bergen'
-);

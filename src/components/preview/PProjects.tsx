@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { PROJECTS_ENG } from '@/config/fields.ts';
 import { PROJECTS_AZE, SECTIONS_AZE } from '@/config/translations.ts';
@@ -18,12 +18,10 @@ export const PProjects = (): ReactElement => {
       {hasProjects && (
         <>
           <h1>
-            {isEnglish ?
-              section.toUpperCase()
-            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+            {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
-          {projects.map(project => (
+          {projects.map((project) => (
             <div key={project.id}>
               <span>
                 <h2>
@@ -31,10 +29,7 @@ export const PProjects = (): ReactElement => {
                   {project.projLink && (
                     <>
                       {divider}
-                      <a
-                        href={project.projLink}
-                        title={project.projLink}
-                        rel='noreferrer'>
+                      <a href={project.projLink} rel='noreferrer' title={project.projLink}>
                         {isEnglish ? PROJECTS_ENG.link : PROJECTS_AZE.link}
                       </a>
                     </>
@@ -45,7 +40,7 @@ export const PProjects = (): ReactElement => {
               </span>
 
               <ul>
-                {project.projDescriptions.map(projDescription => (
+                {project.projDescriptions.map((projDescription) => (
                   <li key={projDescription}>{projDescription.trim()}</li>
                 ))}
               </ul>

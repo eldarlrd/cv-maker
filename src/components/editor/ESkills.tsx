@@ -1,4 +1,4 @@
-import { type ChangeEvent, type ReactElement } from 'react';
+import type { ChangeEvent, ReactElement } from 'react';
 
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { SKILLSETS_ENG } from '@/config/fields.ts';
@@ -14,7 +14,7 @@ export const ESkills = (): ReactElement => {
   const handleSkillInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setSkill({
       ...skills,
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -22,25 +22,23 @@ export const ESkills = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton section={section} isVisible={isVisible} />
+      <DrawerButton isVisible={isVisible} section={section} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         {Object.entries(SKILLSETS_ENG).map(([id, set]) => (
           <span key={id}>
             <label htmlFor={id}>
-              {isEnglish ?
-                set
-              : SKILLSETS_AZE[id as keyof typeof SKILLSETS_AZE]}
+              {isEnglish ? set : SKILLSETS_AZE[id as keyof typeof SKILLSETS_AZE]}
             </label>
             <input
-              title=''
-              id={id}
-              type='text'
-              minLength={1}
-              maxLength={1024}
-              value={skills[id as keyof typeof SKILLSETS_ENG]}
-              onInput={handleSkillInput}
               autoCapitalize='words'
+              id={id}
+              maxLength={1024}
+              minLength={1}
+              onInput={handleSkillInput}
+              title=''
+              type='text'
+              value={skills[id as keyof typeof SKILLSETS_ENG]}
             />
           </span>
         ))}

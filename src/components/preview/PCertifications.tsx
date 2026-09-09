@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { SECTIONS_AZE } from '@/config/translations.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
@@ -16,23 +16,20 @@ export const PCertifications = (): ReactElement => {
       {hasCertifications && (
         <>
           <h1>
-            {isEnglish ?
-              section.toUpperCase()
-            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+            {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
           <ul>
-            {certifications.map(certification => (
+            {certifications.map((certification) => (
               <li key={certification.id}>
                 {certification.certTitle} -{' '}
-                {certification.link ?
-                  <a
-                    title={certification.link}
-                    href={certification.link}
-                    rel='noreferrer'>
+                {certification.link ? (
+                  <a href={certification.link} rel='noreferrer' title={certification.link}>
                     {certification.issuer}
                   </a>
-                : certification.issuer}
+                ) : (
+                  certification.issuer
+                )}
               </li>
             ))}
           </ul>

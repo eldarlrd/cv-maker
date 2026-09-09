@@ -1,78 +1,67 @@
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
-import { useState, type ReactElement, type ChangeEvent } from 'react';
+import { type ChangeEvent, type ReactElement, useState } from 'react';
 
 import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { ACTIONS_ENG, PROJECTS_ENG } from '@/config/fields.ts';
 import { ACTIONS_AZE, PROJECTS_AZE } from '@/config/translations.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
-import { type ProjectDetails } from '@/slices/projectsSlice.ts';
+import type { ProjectDetails } from '@/slices/projectsSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EProjects = (): ReactElement => {
   const section = 'Projects';
-  const {
-    projects,
-    sortProjects,
-    addProject,
-    removeProject,
-    openMenus,
-    language
-  } = useStore();
+  const { projects, sortProjects, addProject, removeProject, openMenus, language } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [projectObj, setProjectObj] = useState<ProjectDetails>({
     id: '',
-    projName: '',
+    projDescriptions: [],
     projLink: '',
+    projName: '',
     stack: '',
-    projDescriptions: []
   });
 
   const isDisabled =
-    !projectObj.projName ||
-    !projectObj.stack ||
-    !(projectObj.projDescriptions.length > 0) ||
-    projectObj.projDescriptions.some(desc => desc.trim() === '');
+    !(projectObj.projName && projectObj.stack && projectObj.projDescriptions.length > 0) ||
+    projectObj.projDescriptions.some((desc) => desc.trim() === '');
 
   const handleProjectInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
 
-    setProjectObj(prevObj => ({
+    setProjectObj((prevObj) => ({
       ...prevObj,
-      [id]: value
+      [id]: value,
     }));
   };
 
-  const handleProjDescriptionsInput = (
-    e: ChangeEvent<HTMLTextAreaElement>
-  ): void => {
+  const handleProjDescriptionsInput = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     const projDescriptions = e.target.value.split('\n\n');
 
     setProjectObj({
       ...projectObj,
-      projDescriptions
+      projDescriptions,
     });
   };
 
   const handleAddProject = (): void => {
     addProject({
       ...projectObj,
-      id: nanoid()
+      id: nanoid(),
     });
     setProjectObj({
       id: '',
-      projName: '',
+      projDescriptions: [],
       projLink: '',
+      projName: '',
       stack: '',
-      projDescriptions: []
     });
   };
 
   const editProject = (id: string): void => {
-    const projectToEdit = projects.find(p => p.id === id);
+    const projectToEdit = projects.find((p) => p.id === id);
 
     if (projectToEdit) {
       setProjectObj(projectToEdit);
@@ -84,68 +73,63 @@ export const EProjects = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton section={section} isVisible={isVisible} />
+      <DrawerButton isVisible={isVisible} section={section} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <DndList
-          nameKey='projName'
-          itemArr={projects as ListProps[]}
-          handleSort={sortProjects}
           handleEdit={editProject}
           handleRemove={removeProject}
+          handleSort={sortProjects}
+          itemArr={projects as ListProps[]}
+          nameKey='projName'
         />
 
         <div className='two-column'>
           <span>
-            <label htmlFor='projName'>
-              {isEnglish ? PROJECTS_ENG.name : PROJECTS_AZE.name}
-            </label>
+            <label htmlFor='projName'>{isEnglish ? PROJECTS_ENG.name : PROJECTS_AZE.name}</label>
             <input
-              title=''
-              type='text'
-              id='projName'
-              minLength={1}
-              maxLength={128}
-              value={projectObj.projName}
-              onInput={handleProjectInput}
               autoCapitalize='words'
               autoComplete='on'
+              id='projName'
+              maxLength={128}
+              minLength={1}
+              onInput={handleProjectInput}
+              title=''
+              type='text'
+              value={projectObj.projName}
             />
           </span>
 
           <span>
             <label htmlFor='projLink'>
               {isEnglish ? PROJECTS_ENG.link : PROJECTS_AZE.link}{' '}
-              <FontAwesomeIcon size='sm' icon={faLink} />
+              <FontAwesomeIcon icon={faLink} size='sm' />
             </label>
             <input
+              autoCapitalize='words'
+              id='projLink'
+              maxLength={128}
+              minLength={1}
+              onInput={handleProjectInput}
               title=''
               type='text'
-              id='projLink'
-              minLength={1}
-              maxLength={128}
               value={projectObj.projLink}
-              onInput={handleProjectInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
 
         <div id='editor-project-stack'>
           <span>
-            <label htmlFor='stack'>
-              {' '}
-              {isEnglish ? PROJECTS_ENG.stack : PROJECTS_AZE.stack}
-            </label>
+            <label htmlFor='stack'> {isEnglish ? PROJECTS_ENG.stack : PROJECTS_AZE.stack}</label>
             <input
+              autoCapitalize='words'
+              id='stack'
+              maxLength={256}
+              minLength={1}
+              onInput={handleProjectInput}
               title=''
               type='text'
-              id='stack'
-              minLength={1}
-              maxLength={256}
               value={projectObj.stack}
-              onInput={handleProjectInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
@@ -156,22 +140,18 @@ export const EProjects = (): ReactElement => {
             {isEnglish ? PROJECTS_ENG.description : PROJECTS_AZE.description}
           </label>
           <textarea
-            title=''
-            rows={6}
-            minLength={1}
-            maxLength={4000}
             id='projDescriptions'
-            spellCheck={false}
-            value={projectObj.projDescriptions.join('\n\n')}
+            maxLength={4000}
+            minLength={1}
             onInput={handleProjDescriptionsInput}
+            rows={6}
+            spellCheck={false}
+            title=''
+            value={projectObj.projDescriptions.join('\n\n')}
           />
         </span>
 
-        <button
-          type='button'
-          className='add-btn'
-          onClick={handleAddProject}
-          disabled={isDisabled}>
+        <button className='add-btn' disabled={isDisabled} onClick={handleAddProject} type='button'>
           {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>

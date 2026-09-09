@@ -1,20 +1,13 @@
 import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy
-} from '@dnd-kit/sortable';
-import { type ReactElement } from 'react';
+import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import type { ReactElement } from 'react';
 
 import { ListItem } from '@/components/editor/menus/ListItem.tsx';
-import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
-import { type EducationDetails } from '@/slices/educationSlice.ts';
-import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
-import { type ProjectDetails } from '@/slices/projectsSlice.ts';
+import type { CertificationDetails } from '@/slices/certificationsSlice.ts';
+import type { EducationDetails } from '@/slices/educationSlice.ts';
+import type { ExperienceDetails } from '@/slices/experienceSlice.ts';
+import type { ProjectDetails } from '@/slices/projectsSlice.ts';
 
 interface ListItemProps {
   id: string;
@@ -28,11 +21,11 @@ interface ListProps
     CertificationDetails {}
 
 interface DndListProps {
-  nameKey: string;
-  itemArr: ListProps[];
-  handleSort: (sortedArr: ListProps[]) => void;
   handleEdit: (id: string) => void;
   handleRemove: (id: string) => void;
+  handleSort: (sortedArr: ListProps[]) => void;
+  itemArr: ListProps[];
+  nameKey: string;
 }
 
 const DndList = ({
@@ -40,15 +33,15 @@ const DndList = ({
   itemArr,
   handleSort,
   handleEdit,
-  handleRemove
+  handleRemove,
 }: DndListProps): ReactElement => {
   // Drag & Drop Sorting
   const onDragEnd = (e: DragEndEvent): void => {
     const { active, over } = e;
 
     if (active.id !== over?.id) {
-      const prevIndex = itemArr.findIndex(item => item.id === active.id);
-      const newIndex = itemArr.findIndex(item => item.id === over?.id);
+      const prevIndex = itemArr.findIndex((item) => item.id === active.id);
+      const newIndex = itemArr.findIndex((item) => item.id === over?.id);
 
       handleSort(arrayMove(itemArr, prevIndex, newIndex));
     }
@@ -59,25 +52,23 @@ const DndList = ({
       {itemArr.length > 0 && (
         <div className='dnd-list'>
           <DndContext
-            onDragEnd={onDragEnd}
             collisionDetection={closestCenter}
-            modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-            <SortableContext
-              items={itemArr}
-              strategy={verticalListSortingStrategy}>
-              {itemArr.map(item => (
+            modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+            onDragEnd={onDragEnd}>
+            <SortableContext items={itemArr} strategy={verticalListSortingStrategy}>
+              {itemArr.map((item) => (
                 <ListItem
-                  key={item.id}
-                  item={{
-                    id: item.id,
-                    name: item[nameKey as keyof ListProps] as string
-                  }}
-                  handleEdit={() => {
+                  handleEdit={(): void => {
                     handleEdit(item.id);
                   }}
-                  handleRemove={() => {
+                  handleRemove={(): void => {
                     handleRemove(item.id);
                   }}
+                  item={{
+                    id: item.id,
+                    name: item[nameKey as keyof ListProps] as string,
+                  }}
+                  key={item.id}
                 />
               ))}
             </SortableContext>
@@ -88,4 +79,4 @@ const DndList = ({
   );
 };
 
-export { type ListItemProps, type ListProps, DndList };
+export { DndList, type ListItemProps, type ListProps };

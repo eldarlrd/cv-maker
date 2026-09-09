@@ -7,7 +7,7 @@ import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '@/config/fields.ts';
 import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '@/config/translations.ts';
-import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
+import type { CertificationDetails } from '@/slices/certificationsSlice.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
 import { useStore } from '@/store.ts';
 
@@ -19,44 +19,43 @@ export const ECertifications = (): ReactElement => {
     addCertification,
     removeCertification,
     openMenus,
-    language
+    language,
   } = useStore();
   const isVisible = openMenus.includes(section);
 
-  const [certificationObj, setCertificationObj] =
-    useState<CertificationDetails>({
-      id: '',
-      certTitle: '',
-      issuer: '',
-      link: ''
-    });
+  const [certificationObj, setCertificationObj] = useState<CertificationDetails>({
+    certTitle: '',
+    id: '',
+    issuer: '',
+    link: '',
+  });
 
-  const isDisabled = !certificationObj.certTitle || !certificationObj.issuer;
+  const isDisabled = !(certificationObj.certTitle && certificationObj.issuer);
 
   const handleCertificationInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
 
-    setCertificationObj(prevObj => ({
+    setCertificationObj((prevObj) => ({
       ...prevObj,
-      [id]: value
+      [id]: value,
     }));
   };
 
   const handleAddCertification = (): void => {
     addCertification({
       ...certificationObj,
-      id: nanoid()
+      id: nanoid(),
     });
     setCertificationObj({
-      id: '',
       certTitle: '',
+      id: '',
       issuer: '',
-      link: ''
+      link: '',
     });
   };
 
   const editCertification = (id: string): void => {
-    const certificationToEdit = certifications.find(c => c.id === id);
+    const certificationToEdit = certifications.find((c) => c.id === id);
 
     if (certificationToEdit) {
       setCertificationObj(certificationToEdit);
@@ -68,15 +67,15 @@ export const ECertifications = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton section={section} isVisible={isVisible} />
+      <DrawerButton isVisible={isVisible} section={section} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <DndList
-          nameKey='certTitle'
-          itemArr={certifications as ListProps[]}
-          handleSort={sortCertifications}
           handleEdit={editCertification}
           handleRemove={removeCertification}
+          handleSort={sortCertifications}
+          itemArr={certifications as ListProps[]}
+          nameKey='certTitle'
         />
 
         <div>
@@ -85,14 +84,14 @@ export const ECertifications = (): ReactElement => {
               {isEnglish ? CERTIFICATIONS_ENG.title : CERTIFICATIONS_AZE.title}
             </label>
             <input
+              autoCapitalize='words'
+              id='certTitle'
+              maxLength={128}
+              minLength={1}
+              onInput={handleCertificationInput}
               title=''
               type='text'
-              id='certTitle'
-              minLength={1}
-              maxLength={128}
               value={certificationObj.certTitle}
-              onInput={handleCertificationInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
@@ -100,45 +99,43 @@ export const ECertifications = (): ReactElement => {
         <div className='two-column'>
           <span>
             <label htmlFor='issuer'>
-              {isEnglish ?
-                CERTIFICATIONS_ENG.issuer
-              : CERTIFICATIONS_AZE.issuer}
+              {isEnglish ? CERTIFICATIONS_ENG.issuer : CERTIFICATIONS_AZE.issuer}
             </label>
             <input
+              autoCapitalize='words'
+              id='issuer'
+              maxLength={128}
+              minLength={1}
+              onInput={handleCertificationInput}
               title=''
               type='text'
-              id='issuer'
-              minLength={1}
-              maxLength={128}
               value={certificationObj.issuer}
-              onInput={handleCertificationInput}
-              autoCapitalize='words'
             />
           </span>
 
           <span>
             <label htmlFor='link'>
               {isEnglish ? CERTIFICATIONS_ENG.link : CERTIFICATIONS_AZE.link}{' '}
-              <FontAwesomeIcon size='sm' icon={faLink} />
+              <FontAwesomeIcon icon={faLink} size='sm' />
             </label>
             <input
+              autoCapitalize='words'
+              id='link'
+              maxLength={128}
+              minLength={1}
+              onInput={handleCertificationInput}
               title=''
               type='text'
-              id='link'
-              minLength={1}
-              maxLength={128}
               value={certificationObj.link}
-              onInput={handleCertificationInput}
-              autoCapitalize='words'
             />
           </span>
         </div>
 
         <button
-          type='button'
           className='add-btn'
+          disabled={isDisabled}
           onClick={handleAddCertification}
-          disabled={isDisabled}>
+          type='button'>
           {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>

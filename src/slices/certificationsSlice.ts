@@ -1,53 +1,44 @@
-import { type StateCreator } from 'zustand';
+import type { StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
 
 interface CertificationDetails {
-  id: string;
   certTitle: string;
+  id: string;
   issuer: string;
   link: string;
 }
 
 interface CertificationsState {
-  certifications: CertificationDetails[];
-  sortCertifications: (sortedCertifications: CertificationDetails[]) => void;
   addCertification: (newCertification: CertificationDetails) => void;
+  certifications: CertificationDetails[];
   removeCertification: (id: string) => void;
+  sortCertifications: (sortedCertifications: CertificationDetails[]) => void;
 }
 
 const initialCertifications: CertificationDetails[] = [];
 
-const createCertificationsSlice: StateCreator<CertificationsState> = set => (
+const createCertificationsSlice: StateCreator<CertificationsState> = (set) => (
   useSliceReset.add(() => {
     set({ certifications: initialCertifications });
   }),
   {
-    certifications: initialCertifications,
-    sortCertifications: (
-      sortedCertifications: CertificationDetails[]
-    ): void => {
-      set({ certifications: sortedCertifications });
-    },
-
     addCertification: (newCertification: CertificationDetails): void => {
-      set(state => ({
-        certifications: [...state.certifications, newCertification]
+      set((state) => ({
+        certifications: [...state.certifications, newCertification],
       }));
     },
+    certifications: initialCertifications,
 
     removeCertification: (id: string): void => {
       set((state: CertificationsState) => ({
-        certifications: state.certifications.filter(
-          certification => certification.id !== id
-        )
+        certifications: state.certifications.filter((certification) => certification.id !== id),
       }));
-    }
+    },
+    sortCertifications: (sortedCertifications: CertificationDetails[]): void => {
+      set({ certifications: sortedCertifications });
+    },
   }
 );
 
-export {
-  type CertificationDetails,
-  type CertificationsState,
-  createCertificationsSlice
-};
+export { type CertificationDetails, type CertificationsState, createCertificationsSlice };

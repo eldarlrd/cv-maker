@@ -1,8 +1,8 @@
-import { type StateCreator } from 'zustand';
+import type { StateCreator } from 'zustand';
 
 enum LANGUAGES {
+  Azerbaijani = 'AZE',
   English = 'ENG',
-  Azerbaijani = 'AZE'
 }
 
 interface LanguageState {
@@ -10,11 +10,11 @@ interface LanguageState {
   switchLanguage: (newLanguage: LANGUAGES) => void;
 }
 
-const createLanguageSlice: StateCreator<LanguageState> = set => ({
+const createLanguageSlice: StateCreator<LanguageState> = (set) => ({
   language: LANGUAGES.English,
   switchLanguage: (newLanguage): void => {
     set({ language: newLanguage });
-  }
+  },
 });
 
-export { type LanguageState, LANGUAGES, createLanguageSlice };
+export { LANGUAGES, type LanguageState, createLanguageSlice };

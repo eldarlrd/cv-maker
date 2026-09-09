@@ -1,0 +1,310 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "noDuplicateClasses": "on",
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [":BUN:", ":NODE:"],
+              ":BLANK_LINE:",
+              ":URL:",
+              ":BLANK_LINE:",
+              [":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:"],
+              ":BLANK_LINE:",
+              ["ALIAS", "PATH"]
+            ],
+            "identifierOrder": "lexicographic"
+          }
+        },
+        "useSortedAttributes": "on",
+        "useSortedEnumMembers": "on",
+        "useSortedInterfaceMembers": "on",
+        "useSortedKeys": "on",
+        "useSortedPackageJson": "on",
+        "useSortedProperties": "on",
+        "useSortedSelectionSet": "on",
+        "useSortedTypeFields": "on"
+      }
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single"
+    },
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    }
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["src/**/*", "__{tests,mocks,snapshots}__/**/*"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 100
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true,
+      "indentScriptAndStyle": true,
+      "selfCloseVoidElements": "always"
+    },
+    "parser": {
+      "interpolation": true
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "bracketSameLine": true,
+      "jsxQuoteStyle": "single",
+      "quoteStyle": "single",
+      "trailingCommas": "es5"
+    }
+  },
+  "linter": {
+    "domains": {
+      "astro": "all",
+      "drizzle": "all",
+      // "next": "all", • Conflicts w/ React
+      "playwright": "all",
+      "project": "all",
+      // "qwik": "all", • Conflicts w/ React
+      "react": "all",
+      "reactNative": "all",
+      // "solid": "all", • Conflicts w/ React
+      "svelte": "all",
+      "tailwind": "all",
+      "test": "all",
+      "turborepo": "all",
+      "types": "all",
+      "vue": "all"
+    },
+    "rules": {
+      // Missing • padding-line-between-statements
+      "a11y": {
+        "noNoninteractiveElementInteractions": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "info",
+        "noExcessiveLinesPerFunction": {
+          "level": "info",
+          "options": {
+            "maxLines": 100,
+            "skipBlankLines": true
+          }
+        },
+        "noRedundantDefaultExport": "warn",
+        "noUselessReturn": "info",
+        "useSimplifiedLogicExpression": "info",
+        "useWhile": "warn"
+      },
+      "correctness": {
+        "noNestedComponentDefinitions": "error", // React
+        "noUnresolvedImports": "off",
+        "noUnusedInstantiation": "info",
+        "useSingleJsDocAsterisk": "info",
+        "useUniqueElementIds": "off" // React
+      },
+      "nursery": {
+        "noAstroSetHtmlDirective": "error", // Astro
+        "noBaseToString": "info", // Types
+        "noComponentHookFactories": "error", // React
+        "noConditionalExpect": "info", // Test
+        "noDuplicateSelectors": "error", // CSS
+        "noEmptyObjectKeys": "error", // JSON
+        "noExtendNative": "error",
+        "noFloatingPromises": "info", // Types
+        "noIdenticalTestTitle": "warn", // Test
+        "noImpliedEval": "error",
+        "noJsxLeakedDollar": "warn", // React
+        "noJsxNamespace": "info", // React
+        "noMisleadingReturnType": "info", // Types
+        "noMisusedPromises": "info", // Types
+        "noReactNativeDeepImports": "error", // React Native
+        "noReactNativeLiteralColors": "info", // React Native
+        // "noReactNativeRawText": "error", // React Native • Conflicts w/ React
+        "noReactStringRefs": "warn", // React
+        "noRestrictedDependencies": "info",
+        // "noSvelteAtHtmlTags": "error", // Svelte • Unsupported
+        "noSvelteLegacyConst": "info", // Svelte
+        "noSvelteUnnecessaryStateWrap": "info", // Svelte
+        "noTopLevelLiterals": "error", // JSON
+        "noUndeclaredClasses": "info", // Project • CSS
+        "noUndeclaredCustomProperties": "error", // Project • CSS
+        "noUnnecessaryTemplateExpression": "info",
+        "noUnsafePlusOperands": "info", // Types
+        "noUntrustedLicenses": "warn", // Project
+        "noUnusedClasses": "info", // Project • CSS
+        "noUselessTypeConversion": "info", // Types
+        "noVueImportCompilerMacros": "info", // Vue
+        "noVueVOnNumberValues": "info", // Vue
+        "useArraySome": "info",
+        "useAstroClientOnlyDirectiveValue": "warn", // Astro
+        "useBaseline": {
+          "level": "info", // CSS
+          "options": {
+            "available": "newly"
+          }
+        },
+        "useConsistentTestIt": "warn", // Test
+        "useDisposables": "error", // Types
+        "useExhaustiveSwitchCases": "info", // Types
+        "useExpect": "info", // Test
+        "useExplicitReturnType": "error",
+        "useIframeSandbox": "warn",
+        "useImportsFirst": "warn",
+        "useIncludes": "info", // Types
+        "useMathMinMax": "warn",
+        "useNamedCaptureGroup": "info",
+        "useNamedLayer": "warn", // CSS
+        "useNullishCoalescing": "warn", // Types
+        "useQwikLoaderLocation": "warn", // Qwik
+        "useReactAsyncServerFunction": "info", // React
+        "useReactCompiler": "warn", // React
+        "useReactFunctionComponentDefinition": {
+          "level": "info", // React
+          "options": {
+            "namedComponents": "arrowFunction"
+          }
+        },
+        "useReactNativePlatformComponents": "error", // React Native
+        "useReduceTypeParameter": "info",
+        "useRegexpExec": "info", // Types
+        "useRegexpTest": "warn",
+        // "useScopedStyles": "info", // Vue • Conflicts w/ React
+        "useSortedClasses": "warn",
+        "useStringStartsEndsWith": "info", // Types
+        "useSvelteRequireEachKey": "error", // Svelte
+        "useTailwindShorthandClasses": "info", // Tailwind • CSS
+        "useTestHooksInOrder": "warn", // Test
+        "useTestHooksOnTop": "warn", // Test
+        "useThisInClassMethods": "warn",
+        // "noVueRefAsOperand": "error", // Vue • Conflicts w/ React
+        "useVueConsistentDefinePropsDeclaration": "info", // Vue
+        "useVueNextTickPromise": "info", // Vue
+        "useVueValidVFor": "info" // Vue
+      },
+      "performance": {
+        "noAwaitInLoops": "info",
+        "noBarrelFile": "warn",
+        "noDelete": "warn",
+        "noJsxPropsBind": "off", // React
+        "noNamespaceImport": "warn",
+        "noReExportAll": "warn",
+        "useTopLevelRegex": "warn"
+      },
+      "preset": "recommended",
+      "security": {
+        "noSecrets": {
+          "level": "error",
+          "options": {
+            "entropyThreshold": 55
+          }
+        }
+      },
+      "style": {
+        "noCommonJs": "warn",
+        "noDefaultExport": "warn",
+        "noExcessiveClassesPerFile": {
+          "level": "info",
+          "options": {
+            "maxClasses": 2
+          }
+        },
+        "noExcessiveLinesPerFile": {
+          "level": "info",
+          "options": {
+            "maxLines": 350,
+            "skipBlankLines": true
+          }
+        },
+        "noMagicNumbers": "warn",
+        "noNegationElse": "info",
+        // https://github.com/biomejs/biome/issues/5936#issuecomment-3876398540
+        "noRestrictedImports": {
+          "level": "warn",
+          "options": {
+            "patterns": [
+              {
+                "group": ["../*"],
+                "message": "Relative imports nested more than one level are not allowed."
+              }
+            ]
+          }
+        },
+        "noShoutyConstants": "info",
+        "noSubstr": "info",
+        "noUnusedTemplateLiteral": "warn",
+        "noUselessElse": "info",
+        "noYodaExpression": "info",
+        "useAsConstAssertion": "info",
+        "useAtIndex": "info",
+        "useCollapsedElseIf": "info",
+        "useCollapsedIf": "info",
+        "useComponentExportOnlyModules": {
+          "level": "error", // React
+          "options": {
+            "allowConstantExport": true
+          }
+        },
+        "useConsistentArrayType": "info",
+        "useConsistentArrowReturn": "info",
+        "useConsistentMemberAccessibility": {
+          "level": "error",
+          "options": {
+            "accessibility": "explicit"
+          }
+        },
+        "useDefaultParameterLast": "warn",
+        "useDefaultSwitchClause": "warn",
+        "useErrorCause": "info",
+        "useExportsLast": "info",
+        "useForOf": "info",
+        "useFragmentSyntax": "info",
+        "useGlobalThis": "warn",
+        "useGroupedAccessorPairs": "info",
+        "useReadonlyClassProperties": {
+          "level": "info",
+          "options": {
+            "checkAllProperties": true
+          }
+        },
+        "useSelfClosingElements": "info",
+        "useShorthandAssign": "info",
+        "useSpreadOverApply": "info",
+        "useTemplate": "off",
+        "useThrowNewError": "warn",
+        "useThrowOnlyError": "warn",
+        "useTrimStartEnd": "info",
+        "useUnifiedTypeSignatures": "info"
+      },
+      "suspicious": {
+        "noDuplicateDependencies": "error",
+        "noEmptyBlock": "warn",
+        "noEmptyBlockStatements": "warn",
+        "noEmptySource": "warn",
+        "noEvolvingTypes": "error",
+        "noMisplacedAssertion": "warn",
+        "noUnassignedVariables": "error",
+        "noUnknownAttribute": "off", // React
+        "noUnusedExpressions": "warn",
+        "noVar": "error",
+        "useAwait": "error",
+        "useGuardForIn": "warn",
+        "useNumberToFixedDigitsArgument": "warn"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "enabled": true,
+    "useIgnoreFile": true
+  }
+}

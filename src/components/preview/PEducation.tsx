@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { SECTIONS_AZE } from '@/config/translations.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
@@ -16,19 +16,16 @@ export const PEducation = (): ReactElement => {
       {hasEducation && (
         <>
           <h1>
-            {isEnglish ?
-              section.toUpperCase()
-            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+            {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
-          {education.map(education => (
+          {education.map((education) => (
             <div key={education.id}>
               <span>
                 <h2>{education.college}</h2>
 
                 <h3>
-                  {education.startYear} -{' '}
-                  {education.endYear || (isEnglish ? 'Present' : 'Hazırda')}
+                  {education.startYear} - {education.endYear || (isEnglish ? 'Present' : 'Hazırda')}
                 </h3>
               </span>
 

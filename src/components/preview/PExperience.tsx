@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { SECTIONS_AZE } from '@/config/translations.ts';
 import { LANGUAGES } from '@/slices/languageSlice.ts';
@@ -16,12 +16,10 @@ export const PExperience = (): ReactElement => {
       {hasExperience && (
         <>
           <h1>
-            {isEnglish ?
-              section.toUpperCase()
-            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+            {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
-          {experience.map(experience => (
+          {experience.map((experience) => (
             <div key={experience.id}>
               <span>
                 <h2>
@@ -35,7 +33,7 @@ export const PExperience = (): ReactElement => {
               </span>
 
               <ul>
-                {experience.descriptions.map(description => (
+                {experience.descriptions.map((description) => (
                   <li key={description}>{description.trim()}</li>
                 ))}
               </ul>

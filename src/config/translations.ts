@@ -1,73 +1,73 @@
 const SKILLSETS_AZE = {
-  progLang: 'Proqramlaşdırma Dilləri',
-  libFrame: 'Kitabxanalar / Freymvorklar',
-  toolPlat: 'Alətlər / Platformalar',
   databases: 'Data Bazalar',
-  languages: 'Dillər'
+  languages: 'Dillər',
+  libFrame: 'Kitabxanalar / Freymvorklar',
+  progLang: 'Proqramlaşdırma Dilləri',
+  toolPlat: 'Alətlər / Platformalar',
 } as const;
 
 const ACTIONS_AZE = {
   add: 'Əlavə et',
-  reset: 'Sıfırla',
   download: 'Yüklə',
   edit: 'Redaktə et',
   remove: 'Sil',
-  reorder: 'Sırala'
+  reorder: 'Sırala',
+  reset: 'Sıfırla',
 } as const;
 
 const SECTIONS_AZE = {
-  Personal: 'Şəxsi',
-  Experience: 'Təcrübə',
+  Certifications: 'Sertifikatlar',
   Education: 'Təhsil',
-  Skills: 'Bacarıqlar',
+  Experience: 'Təcrübə',
+  Personal: 'Şəxsi',
   Projects: 'Layihələr',
-  Certifications: 'Sertifikatlar'
+  Skills: 'Bacarıqlar',
 } as const;
 
 const PERSONAL_AZE = {
+  address: 'Ünvan',
   fullName: 'Ad',
-  profession: 'Peşə',
   phone: 'Telefon',
-  address: 'Ünvan'
+  profession: 'Peşə',
 } as const;
 
 const EXPERIENCE_AZE = {
+  description: 'Ətraflı',
   employer: 'Müəssisə',
-  position: 'Vəzifə',
-  location: 'Məkan',
-  startDate: 'Başlama tarixi',
   endDate: 'Bitmə tarixi',
-  description: 'Ətraflı'
+  location: 'Məkan',
+  position: 'Vəzifə',
+  startDate: 'Başlama tarixi',
 } as const;
 
 const EDUCATION_AZE = {
   college: 'Təhsil Müəssisəsi',
-  major: 'İxtisas',
   degree: 'Dərəcə',
+  endYear: 'Bitirmə ili',
+  major: 'İxtisas',
   startYear: 'Başlama ili',
-  endYear: 'Bitirmə ili'
 } as const;
 
 const PROJECTS_AZE = {
-  name: 'Ad',
+  description: 'Ətraflı',
   link: 'Keçid',
+  name: 'Ad',
   stack: 'Texnologiya',
-  description: 'Ətraflı'
 };
 
 const CERTIFICATIONS_AZE = {
-  title: 'Başlıq',
   issuer: 'Təşkilat',
-  link: 'Keçid'
+  link: 'Keçid',
+  title: 'Başlıq',
 };
 
 export {
-  SKILLSETS_AZE,
   ACTIONS_AZE,
-  SECTIONS_AZE,
-  PERSONAL_AZE,
-  EXPERIENCE_AZE,
+  CERTIFICATIONS_AZE,
   EDUCATION_AZE,
+  EXPERIENCE_AZE,
+  PERSONAL_AZE,
   PROJECTS_AZE,
-  CERTIFICATIONS_AZE
+  SECTIONS_AZE,
+  SKILLSETS_AZE,
 };

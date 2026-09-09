@@ -1,6 +1,6 @@
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ChangeEvent, type ReactElement } from 'react';
+import type { ChangeEvent, ReactElement } from 'react';
 
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { PERSONAL_ENG } from '@/config/fields.ts';
@@ -16,7 +16,7 @@ export const EPerson = (): ReactElement => {
   const handlePersonInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setPerson({
       ...person,
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -25,8 +25,8 @@ export const EPerson = (): ReactElement => {
       ...person,
       links: {
         ...person.links,
-        [e.target.id]: e.target.value
-      }
+        [e.target.id]: e.target.value,
+      },
     });
   };
 
@@ -34,7 +34,7 @@ export const EPerson = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton section={section} isVisible={isVisible} />
+      <DrawerButton isVisible={isVisible} section={section} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <div className='two-column'>
@@ -43,15 +43,15 @@ export const EPerson = (): ReactElement => {
               {isEnglish ? PERSONAL_ENG.fullName : PERSONAL_AZE.fullName}
             </label>
             <input
-              title=''
-              id='name'
-              type='text'
-              minLength={1}
-              maxLength={128}
-              value={person.name}
-              onInput={handlePersonInput}
               autoCapitalize='words'
               autoComplete='on'
+              id='name'
+              maxLength={128}
+              minLength={1}
+              onInput={handlePersonInput}
+              title=''
+              type='text'
+              value={person.name}
             />
           </span>
 
@@ -60,14 +60,14 @@ export const EPerson = (): ReactElement => {
               {isEnglish ? PERSONAL_ENG.profession : PERSONAL_AZE.profession}
             </label>
             <input
-              title=''
-              id='title'
-              type='text'
-              minLength={1}
-              maxLength={128}
-              value={person.title}
-              onInput={handlePersonInput}
               autoCapitalize='words'
+              id='title'
+              maxLength={128}
+              minLength={1}
+              onInput={handlePersonInput}
+              title=''
+              type='text'
+              value={person.title}
             />
           </span>
         </div>
@@ -76,31 +76,29 @@ export const EPerson = (): ReactElement => {
           <span>
             <label htmlFor='email'>Email</label>
             <input
-              title=''
-              id='email'
-              type='email'
-              minLength={1}
-              maxLength={128}
-              value={person.email}
-              onInput={handlePersonInput}
               autoComplete='on'
+              id='email'
+              maxLength={128}
+              minLength={1}
+              onInput={handlePersonInput}
+              title=''
+              type='email'
+              value={person.email}
             />
           </span>
 
           <span>
-            <label htmlFor='phone'>
-              {isEnglish ? PERSONAL_ENG.phone : PERSONAL_AZE.phone}
-            </label>
+            <label htmlFor='phone'>{isEnglish ? PERSONAL_ENG.phone : PERSONAL_AZE.phone}</label>
             <input
-              title=''
+              autoComplete='on'
               id='phone'
-              type='tel'
-              minLength={9}
               maxLength={18}
-              value={person.phone}
+              minLength={9}
               onInput={handlePersonInput}
               pattern='^(\+?\d{1,3}\s?)?(\(\d{2,3}\)|\d{2,3})[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$'
-              autoComplete='on'
+              title=''
+              type='tel'
+              value={person.phone}
             />
           </span>
 
@@ -109,14 +107,14 @@ export const EPerson = (): ReactElement => {
               {isEnglish ? PERSONAL_ENG.address : PERSONAL_AZE.address}
             </label>
             <input
-              title=''
-              id='address'
-              type='address'
-              minLength={1}
-              maxLength={128}
-              value={person.address}
-              onInput={handlePersonInput}
               autoComplete='on'
+              id='address'
+              maxLength={128}
+              minLength={1}
+              onInput={handlePersonInput}
+              title=''
+              type='address'
+              value={person.address}
             />
           </span>
         </div>
@@ -124,46 +122,46 @@ export const EPerson = (): ReactElement => {
         <div className='three-column'>
           <span>
             <label htmlFor='Portfolio'>
-              Portfolio <FontAwesomeIcon size='sm' icon={faLink} />
+              Portfolio <FontAwesomeIcon icon={faLink} size='sm' />
             </label>
             <input
-              title=''
               id='Portfolio'
-              type='text'
-              minLength={1}
               maxLength={256}
-              value={person.links.Portfolio}
+              minLength={1}
               onInput={handleLinkInput}
+              title=''
+              type='text'
+              value={person.links.Portfolio}
             />
           </span>
 
           <span>
             <label htmlFor='GitHub'>
-              GitHub <FontAwesomeIcon size='sm' icon={faLink} />
+              GitHub <FontAwesomeIcon icon={faLink} size='sm' />
             </label>
             <input
-              title=''
               id='GitHub'
-              type='text'
-              minLength={1}
               maxLength={256}
-              value={person.links.GitHub}
+              minLength={1}
               onInput={handleLinkInput}
+              title=''
+              type='text'
+              value={person.links.GitHub}
             />
           </span>
 
           <span>
             <label htmlFor='LinkedIn'>
-              LinkedIn <FontAwesomeIcon size='sm' icon={faLink} />
+              LinkedIn <FontAwesomeIcon icon={faLink} size='sm' />
             </label>
             <input
-              title=''
               id='LinkedIn'
-              type='text'
-              minLength={1}
               maxLength={256}
-              value={person.links.LinkedIn}
+              minLength={1}
               onInput={handleLinkInput}
+              title=''
+              type='text'
+              value={person.links.LinkedIn}
             />
           </span>
         </div>

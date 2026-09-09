@@ -1,37 +1,35 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { useStore } from '@/store.ts';
 
 export const PPerson = (): ReactElement => {
   const { person } = useStore();
 
-  const mailToUrl = 'mailto:' + person.email;
+  const mailToUrl = `mailto:${person.email}`;
 
   const hasPersonInfo = Object.values(person).some(
-    info => typeof info === 'string' && info.trim()
+    (info) => typeof info === 'string' && info.trim()
   );
 
-  const visibleLinks = Object.entries(person.links).filter(
-    ([_, link]: [string, string]) => link.trim()
-  );
-
-  const hasLinkInfo = Object.values(person.links).some((link: string) =>
+  const visibleLinks = Object.entries(person.links).filter(([_, link]: [string, string]) =>
     link.trim()
   );
+
+  const hasLinkInfo = Object.values(person.links).some((link: string) => link.trim());
 
   const contactInfo: ReactElement[] = [];
 
   if (person.email) {
     contactInfo.push(
-      <a key='email' href={mailToUrl} title={mailToUrl} rel='noreferrer'>
+      <a href={mailToUrl} key='email' rel='noreferrer' title={mailToUrl}>
         {person.email}
       </a>
     );
   }
 
-  if (person.phone) contactInfo.push(<>{person.phone}</>);
+  if (person.phone) contactInfo.push(person.phone);
 
-  if (person.address) contactInfo.push(<>{person.address}</>);
+  if (person.address) contactInfo.push(person.address);
 
   return (
     <div id='person'>
@@ -53,7 +51,7 @@ export const PPerson = (): ReactElement => {
             {visibleLinks.map(([site, link]: [string, string], i) => (
               <span key={site}>
                 {link.trim() && (
-                  <a href={link.trim()} title={link.trim()} rel='noreferrer'>
+                  <a href={link.trim()} rel='noreferrer' title={link.trim()}>
                     {site}
                   </a>
                 )}

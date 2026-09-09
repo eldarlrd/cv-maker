@@ -30,17 +30,18 @@ bun dev
 ```sh
 bun bundle
 ```
-### Preview Prod Build
+### Serve Prod Build
 ```sh
-bun preview
+bun serve
 ```
-### Format Code (ESLint + Stylelint + Prettier)
+## Tools
+### Fix Code (Biome)
 ```sh
-bun format
+bun fix
 ```
-### Cut Orphans (Knip)
+### See Orphans (Knip)
 ```sh
-bun cut
+bun orphans
 ```
 ## Deploy
 ```sh

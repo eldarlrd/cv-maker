@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { SKILLSETS_ENG } from '@/config/fields.ts';
 import { SECTIONS_AZE, SKILLSETS_AZE } from '@/config/translations.ts';
@@ -10,7 +10,7 @@ export const PSkills = (): ReactElement => {
   const { skills, language } = useStore();
 
   const hasSkills = Object.values(skills).some(
-    skill => typeof skill === 'string' && skill.trim()
+    (skill) => typeof skill === 'string' && skill.trim()
   );
 
   const isEnglish = language === LANGUAGES.English;
@@ -20,9 +20,7 @@ export const PSkills = (): ReactElement => {
       {hasSkills && (
         <>
           <h1>
-            {isEnglish ?
-              section.toUpperCase()
-            : SECTIONS_AZE[section].toLocaleUpperCase('az')}
+            {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
           {Object.entries(skills).map(([set, skills]: [string, string]) => (
@@ -30,9 +28,9 @@ export const PSkills = (): ReactElement => {
               {skills.trim() && (
                 <>
                   <h2>
-                    {isEnglish ?
-                      SKILLSETS_ENG[set as keyof typeof SKILLSETS_ENG]
-                    : SKILLSETS_AZE[set as keyof typeof SKILLSETS_AZE]}
+                    {isEnglish
+                      ? SKILLSETS_ENG[set as keyof typeof SKILLSETS_ENG]
+                      : SKILLSETS_AZE[set as keyof typeof SKILLSETS_AZE]}
                   </h2>
                   <p>{skills.trim()}</p>
                 </>

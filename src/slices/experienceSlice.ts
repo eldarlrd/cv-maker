@@ -1,47 +1,46 @@
-import { type StateCreator } from 'zustand';
+import type { StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
 
 interface ExperienceDetails {
-  id: string;
-  employer: string;
-  position: string;
-  location: string;
-  startDate: string;
-  endDate: string;
   descriptions: string[];
+  employer: string;
+  endDate: string;
+  id: string;
+  location: string;
+  position: string;
+  startDate: string;
 }
 
 interface ExperienceState {
-  experience: ExperienceDetails[];
-  sortExperience: (sortedExperience: ExperienceDetails[]) => void;
   addExperience: (newExperience: ExperienceDetails) => void;
+  experience: ExperienceDetails[];
   removeExperience: (id: string) => void;
+  sortExperience: (sortedExperience: ExperienceDetails[]) => void;
 }
 
 const initialExperience: ExperienceDetails[] = [];
 
-const createExperienceSlice: StateCreator<ExperienceState> = set => (
+const createExperienceSlice: StateCreator<ExperienceState> = (set) => (
   useSliceReset.add(() => {
     set({ experience: initialExperience });
   }),
   {
-    experience: initialExperience,
-    sortExperience: (sortedExperience: ExperienceDetails[]): void => {
-      set({ experience: sortedExperience });
-    },
-
     addExperience: (newExperience: ExperienceDetails): void => {
-      set(state => ({
-        experience: [...state.experience, newExperience]
+      set((state) => ({
+        experience: [...state.experience, newExperience],
       }));
     },
+    experience: initialExperience,
 
     removeExperience: (id: string): void => {
       set((state: ExperienceState) => ({
-        experience: state.experience.filter(experience => experience.id !== id)
+        experience: state.experience.filter((experience) => experience.id !== id),
       }));
-    }
+    },
+    sortExperience: (sortedExperience: ExperienceDetails[]): void => {
+      set({ experience: sortedExperience });
+    },
   }
 );
 
