@@ -16,6 +16,7 @@ const ACTIONS_AZE = {
   remove: 'Sil',
   reorder: 'Sırala',
   clear: 'Sıfırla',
+  paste: 'Yapışdır',
 } as const;
 
 const SECTIONS_AZE = {
@@ -29,9 +30,9 @@ const SECTIONS_AZE = {
 
 const PERSONAL_AZE = {
   address: 'Ünvan',
-  name: 'Ad',
+  name: 'Ad*',
   phone: 'Telefon',
-  profession: 'Peşə',
+  profession: 'Peşə*',
 } as const;
 
 const EXPERIENCE_AZE = {

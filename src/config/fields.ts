@@ -17,13 +17,14 @@ const ACTIONS_ENG = {
   remove: 'Remove',
   reorder: 'Reorder',
   clear: 'Clear',
+  paste: 'Paste',
 } as const;
 
 const PERSONAL_ENG = {
   address: 'Address',
-  name: 'Name',
+  name: 'Name*',
   phone: 'Phone',
-  profession: 'Profession',
+  profession: 'Profession*',
 } as const;
 
 const EXPERIENCE_ENG = {

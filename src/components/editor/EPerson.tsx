@@ -47,6 +47,7 @@ export const EPerson = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handlePersonInput}
+              required
               title=''
               type='text'
               value={person.name}
@@ -63,6 +64,7 @@ export const EPerson = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handlePersonInput}
+              required
               title=''
               type='text'
               value={person.title}

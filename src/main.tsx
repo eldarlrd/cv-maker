@@ -40,7 +40,7 @@ const registerSW = (): void => {
           scope: '/cv-maker/',
         })
         .catch((error: unknown) => {
-          if (error instanceof Error) console.error(error);
+          if (error instanceof Error) console.error('Service Worker Register failed.', error);
         });
     });
 };

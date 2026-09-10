@@ -2,6 +2,8 @@ import {
   faCircleDown,
   faClipboard,
   faClipboardCheck,
+  faClipboardQuestion,
+  faPaste,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,6 +25,7 @@ export const Actions = ({
 }): ReactElement => {
   const { person, language } = useStore();
   const [isCopied, setIsCopied] = useState(false);
+  const [isPasteError, setIsPasteError] = useState(false);
 
   const normalizedName = normalize(person.name, language);
   const normalizedTitle = normalize(person.title, language);
@@ -59,6 +62,21 @@ export const Actions = ({
     setTimeout(() => setIsCopied(false), CLIPBOARD_FEEDBACK_DURATION);
   };
 
+  const pasteStore = async (): Promise<void> => {
+    try {
+      const { state } = JSON.parse(await navigator.clipboard.readText()) as {
+        state?: Partial<ReturnType<typeof useStore.getState>>;
+      };
+
+      if (!state || typeof state !== 'object') throw new Error('Invalid clipboard data.');
+
+      useStore.setState(state);
+    } catch {
+      setIsPasteError(true);
+      setTimeout(() => setIsPasteError(false), CLIPBOARD_FEEDBACK_DURATION);
+    }
+  };
+
   return (
     <div id='actions'>
       <button className='action-btn' id='clear-btn' onClick={clearStore} type='button'>
@@ -67,8 +85,17 @@ export const Actions = ({
 
       <button
         className='action-btn'
+        id='paste-btn'
+        onClick={pasteStore}
+        title={isEnglish ? ACTIONS_ENG.paste : ACTIONS_AZE.paste}
+        type='button'>
+        <FontAwesomeIcon icon={isPasteError ? faClipboardQuestion : faPaste} />
+      </button>
+
+      <button
+        className='action-btn'
         disabled={!(normalizedName && normalizedTitle)}
-        id='clipboard-btn'
+        id='copy-btn'
         onClick={copyStore}
         title={isEnglish ? ACTIONS_ENG.clipboard : ACTIONS_AZE.clipboard}
         type='button'>

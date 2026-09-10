@@ -42,7 +42,7 @@
       &:hover
         background hover-clear
 
-  #clipboard-btn
+  #copy-btn
     color main-bg
     aspect-ratio 1 / 1
     background main-copy
@@ -50,6 +50,15 @@
     @media (hover hover)
       &:hover
         background hover-copy
+
+  #paste-btn
+    color main-bg
+    aspect-ratio 1 / 1
+    background main-paste
+
+    @media (hover hover)
+      &:hover
+        background hover-paste
 
   #download-btn
     color main-bg
@@ -60,7 +69,7 @@
       &:hover:not(:disabled)
         background hover-download
 
-  #clipboard-btn:disabled
+  #copy-btn:disabled
   #download-btn:disabled
     color field-bg
     background transparent
