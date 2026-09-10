@@ -99,6 +99,10 @@
     text-overflow ellipsis
     white-space nowrap
 
+    &:has(+ input:required)::after
+    &:has(+ textarea:required)::after
+      content '*'
+
   .editor-menu
     display flex
     min-width 100%

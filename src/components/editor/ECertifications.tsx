@@ -1,4 +1,4 @@
-import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
@@ -139,7 +139,7 @@ export const ECertifications = (): ReactElement => {
           disabled={isDisabled}
           onClick={handleAddCertification}
           type='button'>
-          <FontAwesomeIcon icon={faPlus} /> {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
+          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

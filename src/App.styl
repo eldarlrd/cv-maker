@@ -36,7 +36,7 @@ transition-config = 150ms cubic-bezier(0.4, 0, 0.2, 1)
   --preview-size 1rem
 
   #primary
-    gap 1rem
+    gap 1rem 0
     display flex
     align-items center
     flex-direction column
@@ -53,9 +53,9 @@ transition-config = 150ms cubic-bezier(0.4, 0, 0.2, 1)
     color main-bg
     background main-fg
 
-.tippy-box[data-theme~='slate']
-  color main-bg
-  background tooltip-fg
-  box-shadow main-shadow
+  .tippy-box[data-theme~='slate']
+    color main-bg
+    background tooltip-fg
+    box-shadow main-shadow
 
 @import 'styles/**/*.styl'

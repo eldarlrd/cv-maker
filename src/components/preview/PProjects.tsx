@@ -30,7 +30,7 @@ export const PProjects = (): ReactElement => {
                     <>
                       {divider}
                       <a href={project.projLink} rel='noreferrer' title={project.projLink}>
-                        {isEnglish ? PROJECTS_ENG.demo : PROJECTS_AZE.demo}
+                        {isEnglish ? PROJECTS_ENG.link : PROJECTS_AZE.link}
                       </a>
                     </>
                   ) : null}

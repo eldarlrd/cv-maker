@@ -1,5 +1,6 @@
 // biome-ignore-all assist/source/useSortedKeys: intended order
 
+// # Easily Translatable
 const SKILLSETS_AZE = {
   progLang: 'Proqramlaşdırma dilləri',
   libFrame: 'Kitabxanalar / Freymvorklar',
@@ -59,7 +60,6 @@ const EDUCATION_AZE = {
 } as const;
 
 const PROJECTS_AZE = {
-  demo: 'Demo',
   description: 'Ətraflı',
   link: 'Keçid',
   name: 'Ad',

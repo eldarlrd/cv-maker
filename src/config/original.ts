@@ -51,7 +51,6 @@ const EDUCATION_ENG = {
 } as const;
 
 const PROJECTS_ENG = {
-  demo: 'Demo',
   description: 'Description',
   link: 'Link',
   name: 'Name',
