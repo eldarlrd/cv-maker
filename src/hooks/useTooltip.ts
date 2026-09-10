@@ -13,6 +13,7 @@ export const useTooltip = (): void => {
       content: (reference) => reference.getAttribute('title') ?? '',
       delay: [SHOW_DELAY, HIDE_DELAY],
       onTrigger: (instance) => {
+        // removes native title popup
         const title = instance.reference.getAttribute('title');
 
         if (title !== null) {
@@ -23,7 +24,7 @@ export const useTooltip = (): void => {
       placement: 'right',
       target: TOOLTIP_TARGETS,
       theme: 'slate',
-      touch: ['hold', HIDE_DELAY],
+      touch: ['hold', HIDE_DELAY], // touch delay
     });
 
     return (): void => {
