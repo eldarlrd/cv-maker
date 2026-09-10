@@ -57,7 +57,7 @@
     background main-paste
 
     @media (hover hover)
-      &:hover
+      &:hover:not(:disabled)
         background hover-paste
 
   #download-btn
@@ -71,5 +71,6 @@
 
   #copy-btn:disabled
   #download-btn:disabled
+  #paste-btn:disabled
     color field-bg
     background transparent

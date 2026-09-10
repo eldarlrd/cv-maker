@@ -192,8 +192,7 @@ export const EExperience = (): ReactElement => {
           disabled={isDisabled}
           onClick={handleAddExperience}
           type='button'>
-          <FontAwesomeIcon icon={faPlus} size='sm' />{' '}
-          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
+          <FontAwesomeIcon icon={faPlus} /> {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

@@ -168,8 +168,7 @@ export const EEducation = (): ReactElement => {
           disabled={isDisabled}
           onClick={handleAddEducation}
           type='button'>
-          <FontAwesomeIcon icon={faPlus} size='sm' />{' '}
-          {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
+          <FontAwesomeIcon icon={faPlus} /> {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>
     </>

@@ -100,6 +100,7 @@ export const Actions = ({
 
       <button
         className='action-btn'
+        disabled={isPasted || isPasteError}
         id='paste-btn'
         onClick={pasteStore}
         title={isEnglish ? ACTIONS_ENG.paste : ACTIONS_AZE.paste}
@@ -111,7 +112,7 @@ export const Actions = ({
 
       <button
         className='action-btn'
-        disabled={!(normalizedName && normalizedTitle)}
+        disabled={!(normalizedName && normalizedTitle) || isCopied}
         id='copy-btn'
         onClick={copyStore}
         title={isEnglish ? ACTIONS_ENG.clipboard : ACTIONS_AZE.clipboard}
