@@ -1,6 +1,6 @@
-// biome-ignore-all assist/source/useSortedKeys: intended order
-
 // # Easily Translatable
+
+// biome-ignore-start assist/source/useSortedKeys: intended order
 const SKILLSETS_AZE = {
   progLang: 'Proqramlaşdırma dilləri',
   libFrame: 'Kitabxanalar / Freymvorklar',
@@ -8,16 +8,17 @@ const SKILLSETS_AZE = {
   databases: 'Databazalar',
   languages: 'Dillər',
 } as const;
+// biome-ignore-end assist/source/useSortedKeys: reason above
 
 const ACTIONS_AZE = {
   add: 'Əlavə et',
+  clear: 'Sıfırla',
   copy: 'Köçür',
   download: 'Yüklə',
   edit: 'Redaktə et',
+  paste: 'Yapışdır',
   remove: 'Sil',
   reorder: 'Sırala',
-  clear: 'Sıfırla',
-  paste: 'Yapışdır',
 } as const;
 
 const CONFIRMATION_AZE = {

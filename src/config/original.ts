@@ -1,6 +1,6 @@
-// biome-ignore-all assist/source/useSortedKeys: intended order
-
 // # Easily Extendable
+
+// biome-ignore-start assist/source/useSortedKeys: intended order
 const SKILLSETS_ENG = {
   progLang: 'Programming languages',
   libFrame: 'Libraries / Frameworks',
@@ -8,16 +8,17 @@ const SKILLSETS_ENG = {
   databases: 'Databases',
   languages: 'Languages',
 } as const;
+// biome-ignore-end assist/source/useSortedKeys: reason above
 
 const ACTIONS_ENG = {
   add: 'Add',
+  clear: 'Clear',
   copy: 'Copy',
   download: 'Download',
   edit: 'Edit',
+  paste: 'Paste',
   remove: 'Remove',
   reorder: 'Reorder',
-  clear: 'Clear',
-  paste: 'Paste',
 } as const;
 
 const CONFIRMATION_ENG = {

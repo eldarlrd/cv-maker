@@ -25,11 +25,13 @@ interface PersonState {
 const initialPerson: PersonDetails = {
   address: '',
   email: '',
+  // biome-ignore-start assist/source/useSortedKeys: intended order
   links: {
+    Portfolio: '',
     GitHub: '',
     LinkedIn: '',
-    Portfolio: '',
   },
+  // biome-ignore-end assist/source/useSortedKeys: reason above
   name: '',
   phone: '',
   title: '',
