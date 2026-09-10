@@ -10,6 +10,7 @@ const SKILLSETS_AZE = {
 
 const ACTIONS_AZE = {
   add: 'Əlavə et',
+  clipboard: 'Nüsxələ',
   download: 'Yüklə',
   edit: 'Redaktə et',
   remove: 'Sil',

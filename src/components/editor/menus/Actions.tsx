@@ -1,6 +1,11 @@
-import { faCircleDown, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleDown,
+  faClipboard,
+  faClipboardCheck,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { ReactElement, RefObject } from 'react';
+import { type ReactElement, type RefObject, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import { kebabize, normalize } from '&/text.ts';
@@ -9,12 +14,15 @@ import { ACTIONS_AZE } from '#/translations.ts';
 import { clearStore, useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
+const CLIPBOARD_FEEDBACK_DURATION = 1000;
+
 export const Actions = ({
   printRef,
 }: {
   printRef: RefObject<HTMLElement | null>;
 }): ReactElement => {
   const { person, language } = useStore();
+  const [isCopied, setIsCopied] = useState(false);
 
   const normalizedName = normalize(person.name, language);
   const normalizedTitle = normalize(person.title, language);
@@ -45,10 +53,26 @@ export const Actions = ({
 
   const isEnglish = language === LANGUAGES.English;
 
+  const copyStore = async (): Promise<void> => {
+    await navigator.clipboard.writeText(localStorage.getItem('store') ?? '');
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), CLIPBOARD_FEEDBACK_DURATION);
+  };
+
   return (
     <div id='actions'>
       <button className='action-btn' id='clear-btn' onClick={clearStore} type='button'>
         <FontAwesomeIcon icon={faTrash} /> {/* isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear */}
+      </button>
+
+      <button
+        className='action-btn'
+        disabled={!(normalizedName && normalizedTitle)}
+        id='clipboard-btn'
+        onClick={copyStore}
+        title={isEnglish ? ACTIONS_ENG.clipboard : ACTIONS_AZE.clipboard}
+        type='button'>
+        <FontAwesomeIcon icon={isCopied ? faClipboardCheck : faClipboard} />
       </button>
 
       <button
