@@ -12,7 +12,7 @@ import { type ReactElement, type RefObject, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import { kebabize, normalize } from '&/text.ts';
-import { useConfirmation } from '!/useConfirmation.tsx';
+import { useConfirmation } from '!/useConfirmation.ts';
 import { ACTIONS_ENG } from '#/original.ts';
 import { ACTIONS_AZE } from '#/translation.ts';
 import { clearStore, useStore } from '@/store.ts';

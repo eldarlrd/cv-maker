@@ -4,7 +4,7 @@ import { faGripVertical, faPencil, faTrash } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement } from 'react';
 
-import { useConfirmation } from '!/useConfirmation.tsx';
+import { useConfirmation } from '!/useConfirmation.ts';
 import { ACTIONS_ENG } from '#/original.ts';
 import { ACTIONS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
