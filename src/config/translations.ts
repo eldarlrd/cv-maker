@@ -36,9 +36,9 @@ const SECTIONS_AZE = {
 
 const PERSONAL_AZE = {
   address: 'Ünvan',
-  name: 'Ad*',
+  name: 'Ad',
   phone: 'Telefon',
-  profession: 'Peşə*',
+  profession: 'Peşə',
 } as const;
 
 const EXPERIENCE_AZE = {
@@ -59,6 +59,7 @@ const EDUCATION_AZE = {
 } as const;
 
 const PROJECTS_AZE = {
+  demo: 'Demo',
   description: 'Ətraflı',
   link: 'Keçid',
   name: 'Ad',

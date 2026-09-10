@@ -3,6 +3,7 @@ import {
   faClipboard,
   faClipboardCheck,
   faClipboardQuestion,
+  faFileCircleCheck,
   faPaste,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +28,7 @@ export const Actions = ({
   const { person, language } = useStore();
   const { confirm } = useConfirmation();
   const [isCopied, setIsCopied] = useState(false);
+  const [isPasted, setIsPasted] = useState(false);
   const [isPasteError, setIsPasteError] = useState(false);
 
   const normalizedName = normalize(person.name, language);
@@ -73,6 +75,8 @@ export const Actions = ({
       if (!state || typeof state !== 'object') throw new Error('Invalid clipboard data.');
 
       useStore.setState(state);
+      setIsPasted(true);
+      setTimeout(() => setIsPasted(false), CLIPBOARD_FEEDBACK_DURATION);
     } catch {
       setIsPasteError(true);
       setTimeout(() => setIsPasteError(false), CLIPBOARD_FEEDBACK_DURATION);
@@ -99,7 +103,9 @@ export const Actions = ({
         onClick={pasteStore}
         title={isEnglish ? ACTIONS_ENG.paste : ACTIONS_AZE.paste}
         type='button'>
-        <FontAwesomeIcon icon={isPasteError ? faClipboardQuestion : faPaste} />
+        <FontAwesomeIcon
+          icon={isPasteError ? faClipboardQuestion : isPasted ? faFileCircleCheck : faPaste}
+        />
       </button>
 
       <button

@@ -3,9 +3,9 @@ import 'modern-normalize';
 import '@/App.styl';
 import 'non.geist';
 
-import { ConfirmationProvider } from '!/ConfirmationProvider.tsx';
 import { Footer } from '@/components/banners/Footer.tsx';
 import { Header } from '@/components/banners/Header.tsx';
+import { ConfirmationProvider } from '@/components/modals/ConfirmationProvider.tsx';
 import { Editor } from '@/features/Editor.tsx';
 import { Preview } from '@/features/Preview.tsx';
 

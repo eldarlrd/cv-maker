@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import { ConfirmationContext, type ConfirmationContextValue } from '!/ConfirmationContext.ts';
 import { ERROR_CONFIRMATION_HOOK } from '#/errors.ts';
+import { ConfirmationContext, type ConfirmationContextValue } from '%/confirmation.model.ts';
 
 export const useConfirmation = (): ConfirmationContextValue => {
   const context = useContext(ConfirmationContext);

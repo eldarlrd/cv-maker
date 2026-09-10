@@ -95,6 +95,7 @@ export const EProjects = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handleProjectInput}
+              required
               title=''
               type='text'
               value={projectObj.projName}
@@ -128,6 +129,7 @@ export const EProjects = (): ReactElement => {
               maxLength={256}
               minLength={1}
               onChange={handleProjectInput}
+              required
               title=''
               type='text'
               value={projectObj.stack}
@@ -145,6 +147,7 @@ export const EProjects = (): ReactElement => {
             maxLength={4000}
             minLength={1}
             onChange={handleProjDescriptionsInput}
+            required
             rows={6}
             spellCheck={false}
             title=''

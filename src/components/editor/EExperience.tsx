@@ -17,12 +17,24 @@ interface ExperienceFieldProps {
   label: string;
   maxLength: number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
   value: string;
 }
+
+const emptyExperience: ExperienceDetails = {
+  descriptions: [],
+  employer: '',
+  endDate: '',
+  id: '',
+  location: '',
+  position: '',
+  startDate: '',
+};
 
 const ExperienceField = ({
   id,
   label,
+  required = false,
   maxLength,
   onChange,
   value,
@@ -35,6 +47,7 @@ const ExperienceField = ({
       maxLength={maxLength}
       minLength={1}
       onChange={onChange}
+      required={required}
       title=''
       type='text'
       value={value}
@@ -48,15 +61,7 @@ export const EExperience = (): ReactElement => {
     useStore();
   const isVisible = openMenus.includes(section);
 
-  const [experienceObj, setExperienceObj] = useState<ExperienceDetails>({
-    descriptions: [],
-    employer: '',
-    endDate: '',
-    id: '',
-    location: '',
-    position: '',
-    startDate: '',
-  });
+  const [experienceObj, setExperienceObj] = useState<ExperienceDetails>(emptyExperience);
 
   const isDisabled =
     !(
@@ -90,15 +95,7 @@ export const EExperience = (): ReactElement => {
       ...experienceObj,
       id: nanoid(),
     });
-    setExperienceObj({
-      descriptions: [],
-      employer: '',
-      endDate: '',
-      id: '',
-      location: '',
-      position: '',
-      startDate: '',
-    });
+    setExperienceObj(emptyExperience);
   };
 
   const editExperience = (id: string): void => {
@@ -131,6 +128,7 @@ export const EExperience = (): ReactElement => {
             label={isEnglish ? EXPERIENCE_ENG.employer : EXPERIENCE_AZE.employer}
             maxLength={128}
             onChange={handleExperienceInput}
+            required
             value={experienceObj.employer}
           />
 
@@ -139,6 +137,7 @@ export const EExperience = (): ReactElement => {
             label={isEnglish ? EXPERIENCE_ENG.position : EXPERIENCE_AZE.position}
             maxLength={128}
             onChange={handleExperienceInput}
+            required
             value={experienceObj.position}
           />
         </div>
@@ -149,6 +148,7 @@ export const EExperience = (): ReactElement => {
             label={isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
             maxLength={128}
             onChange={handleExperienceInput}
+            required
             value={experienceObj.location}
           />
 
@@ -157,6 +157,7 @@ export const EExperience = (): ReactElement => {
             label={isEnglish ? EXPERIENCE_ENG.startDate : EXPERIENCE_AZE.startDate}
             maxLength={64}
             onChange={handleExperienceInput}
+            required
             value={experienceObj.startDate}
           />
 
@@ -178,6 +179,7 @@ export const EExperience = (): ReactElement => {
             maxLength={4000}
             minLength={1}
             onChange={handleDescriptionsInput}
+            required
             rows={6}
             spellCheck={false}
             title=''

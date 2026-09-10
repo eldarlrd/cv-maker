@@ -28,9 +28,9 @@ const CONFIRMATION_ENG = {
 
 const PERSONAL_ENG = {
   address: 'Address',
-  name: 'Name*',
+  name: 'Name',
   phone: 'Phone',
-  profession: 'Profession*',
+  profession: 'Profession',
 } as const;
 
 const EXPERIENCE_ENG = {
@@ -51,6 +51,7 @@ const EDUCATION_ENG = {
 } as const;
 
 const PROJECTS_ENG = {
+  demo: 'Demo',
   description: 'Description',
   link: 'Link',
   name: 'Name',

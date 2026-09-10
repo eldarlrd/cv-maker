@@ -30,7 +30,7 @@ const normalize = (str: string, lang = LANGUAGES.English): string => {
   if (lang === LANGUAGES.Azerbaijani)
     normalized = normalized.replaceAll(/[xXcC]/g, (letter) => azReplacements[letter]);
 
-  return normalized.replaceAll(/[\p{P}\p{S}]/gu, (character) =>
+  return normalized.replaceAll(/[\p{P}\p{S}\p{N}]/gu, (character) =>
     character === '-' ? character : ''
   );
 };

@@ -12,20 +12,22 @@ import type { ListProps } from '%/dndList.model.ts';
 import type { EducationDetails } from '$/educationSlice.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
+const emptyEducation: EducationDetails = {
+  college: '',
+  degree: '',
+  endYear: '',
+  id: '',
+  major: '',
+  startYear: '',
+};
+
 export const EEducation = (): ReactElement => {
   const section = 'Education';
   const { education, sortEducation, addEducation, removeEducation, openMenus, language } =
     useStore();
   const isVisible = openMenus.includes(section);
 
-  const [educationObj, setEducationObj] = useState<EducationDetails>({
-    college: '',
-    degree: '',
-    endYear: '',
-    id: '',
-    major: '',
-    startYear: '',
-  });
+  const [educationObj, setEducationObj] = useState<EducationDetails>(emptyEducation);
 
   const isDisabled = !(
     educationObj.college &&
@@ -48,14 +50,7 @@ export const EEducation = (): ReactElement => {
       ...educationObj,
       id: nanoid(),
     });
-    setEducationObj({
-      college: '',
-      degree: '',
-      endYear: '',
-      id: '',
-      major: '',
-      startYear: '',
-    });
+    setEducationObj(emptyEducation);
   };
 
   const editEducation = (id: string): void => {
@@ -93,6 +88,7 @@ export const EEducation = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handleEducationInput}
+              required
               title=''
               type='text'
               value={educationObj.college}
@@ -107,6 +103,7 @@ export const EEducation = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handleEducationInput}
+              required
               title=''
               type='text'
               value={educationObj.major}
@@ -125,6 +122,7 @@ export const EEducation = (): ReactElement => {
               maxLength={128}
               minLength={1}
               onChange={handleEducationInput}
+              required
               title=''
               type='text'
               value={educationObj.degree}
@@ -141,6 +139,7 @@ export const EEducation = (): ReactElement => {
               maxLength={64}
               minLength={1}
               onChange={handleEducationInput}
+              required
               title=''
               type='text'
               value={educationObj.startYear}

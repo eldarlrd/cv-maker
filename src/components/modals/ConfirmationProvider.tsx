@@ -1,9 +1,9 @@
 import { type ReactElement, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
-import { ConfirmationContext } from '!/ConfirmationContext.ts';
 import { CONFIRMATION_ENG } from '#/fields.ts';
 import { CONFIRMATION_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
+import { ConfirmationContext } from '%/confirmation.model.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
 export const ConfirmationProvider = ({ children }: { children: ReactNode }): ReactElement => {
