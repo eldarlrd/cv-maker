@@ -13,6 +13,7 @@ import { useReactToPrint } from 'react-to-print';
 
 import { kebabize, normalize } from '&/text.ts';
 import { useConfirmation } from '!/useConfirmation.ts';
+import { ERROR_INVALID_CLIPBOARD } from '#/errors.ts';
 import { ACTIONS_ENG } from '#/original.ts';
 import { ACTIONS_AZE } from '#/translation.ts';
 import { clearStore, useStore } from '@/store.ts';
@@ -67,6 +68,7 @@ export const Actions = ({
       [key: string]: unknown;
     };
     const clipboardState = Object.fromEntries(
+      // omit openMenus & language from copy
       Object.entries(state).filter(([key]) => key !== 'openMenus' && key !== 'language')
     );
 
@@ -81,7 +83,7 @@ export const Actions = ({
         state?: Partial<ReturnType<typeof useStore.getState>>;
       };
 
-      if (!state || typeof state !== 'object') throw new Error('Invalid clipboard data.');
+      if (!state || typeof state !== 'object') throw new Error(ERROR_INVALID_CLIPBOARD);
 
       useStore.setState(state);
       setIsPasted(true);
