@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "paths": {
 	    "@/*": ["./src/*"],
+      "!/*": ["./src/hooks/*"],
       "&/*": ["./src/utils/*"],
 	    "#/*": ["./src/config/*"],
 	    "%/*": ["./src/models/*"],

@@ -21,6 +21,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { ERROR_SERVICE_WORKER } from '#/errors.ts';
 import { App } from '@/App.tsx';
 
 const root = document.getElementById('root');
@@ -40,7 +41,7 @@ const registerSW = (): void => {
           scope: '/cv-maker/',
         })
         .catch((error: unknown) => {
-          if (error instanceof Error) console.error('Service Worker Register failed.', error);
+          if (error instanceof Error) console.error(ERROR_SERVICE_WORKER, error);
         });
     });
 };

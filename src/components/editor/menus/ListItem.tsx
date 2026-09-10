@@ -4,6 +4,7 @@ import { faGripVertical, faPencil, faTrash } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement } from 'react';
 
+import { useConfirmation } from '!/useConfirmation.tsx';
 import { ACTIONS_ENG } from '#/fields.ts';
 import { ACTIONS_AZE } from '#/translations.ts';
 import { useStore } from '@/store.ts';
@@ -20,6 +21,7 @@ export const ListItem = ({
   handleRemove: () => void;
 }): ReactElement => {
   const { language } = useStore();
+  const { confirm } = useConfirmation();
   const id = item.id;
 
   // Drag & Drop Movement
@@ -33,6 +35,10 @@ export const ListItem = ({
   };
 
   const isEnglish = language === LANGUAGES.English;
+
+  const removeItemWithConfirmation = async (): Promise<void> => {
+    if (await confirm()) handleRemove();
+  };
 
   return (
     <div
@@ -63,7 +69,9 @@ export const ListItem = ({
 
         <button
           id='trash-btn'
-          onClick={handleRemove}
+          onClick={(): void => {
+            void removeItemWithConfirmation();
+          }}
           title={isEnglish ? ACTIONS_ENG.remove : ACTIONS_AZE.remove}
           type='button'>
           <FontAwesomeIcon icon={faTrash} />

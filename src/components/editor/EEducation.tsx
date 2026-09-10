@@ -1,3 +1,5 @@
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
 
@@ -167,6 +169,7 @@ export const EEducation = (): ReactElement => {
           disabled={isDisabled}
           onClick={handleAddEducation}
           type='button'>
+          <FontAwesomeIcon icon={faPlus} size='sm' />{' '}
           {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>

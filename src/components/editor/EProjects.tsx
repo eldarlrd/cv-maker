@@ -1,4 +1,4 @@
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
@@ -153,6 +153,7 @@ export const EProjects = (): ReactElement => {
         </span>
 
         <button className='add-btn' disabled={isDisabled} onClick={handleAddProject} type='button'>
+          <FontAwesomeIcon icon={faPlus} size='sm' />{' '}
           {isEnglish ? ACTIONS_ENG.add : ACTIONS_AZE.add}
         </button>
       </div>

@@ -3,6 +3,7 @@ import 'modern-normalize';
 import '@/App.styl';
 import 'non.geist';
 
+import { ConfirmationProvider } from '!/ConfirmationProvider.tsx';
 import { Footer } from '@/components/banners/Footer.tsx';
 import { Header } from '@/components/banners/Header.tsx';
 import { Editor } from '@/features/Editor.tsx';
@@ -12,13 +13,13 @@ export const App = (): ReactElement => {
   const printRef = useRef<HTMLElement | null>(null);
 
   return (
-    <>
+    <ConfirmationProvider>
       <Header />
       <div id='primary'>
         <Editor printRef={printRef} />
         <Preview printRef={printRef} />
       </div>
       <Footer />
-    </>
+    </ConfirmationProvider>
   );
 };

@@ -20,6 +20,12 @@ const ACTIONS_ENG = {
   paste: 'Paste',
 } as const;
 
+const CONFIRMATION_ENG = {
+  message: 'Are you sure?',
+  no: 'No',
+  yes: 'Yes',
+} as const;
+
 const PERSONAL_ENG = {
   address: 'Address',
   name: 'Name*',
@@ -60,6 +66,7 @@ const CERTIFICATIONS_ENG = {
 export {
   ACTIONS_ENG,
   CERTIFICATIONS_ENG,
+  CONFIRMATION_ENG,
   EDUCATION_ENG,
   EXPERIENCE_ENG,
   PERSONAL_ENG,

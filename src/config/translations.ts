@@ -19,6 +19,12 @@ const ACTIONS_AZE = {
   paste: 'Yapışdır',
 } as const;
 
+const CONFIRMATION_AZE = {
+  message: 'Əminsiniz?',
+  no: 'Xeyr',
+  yes: 'Bəli',
+} as const;
+
 const SECTIONS_AZE = {
   Certifications: 'Sertifikatlar',
   Education: 'Təhsil',
@@ -68,6 +74,7 @@ const CERTIFICATIONS_AZE = {
 export {
   ACTIONS_AZE,
   CERTIFICATIONS_AZE,
+  CONFIRMATION_AZE,
   EDUCATION_AZE,
   EXPERIENCE_AZE,
   PERSONAL_AZE,

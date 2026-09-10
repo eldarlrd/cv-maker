@@ -11,6 +11,7 @@ import { type ReactElement, type RefObject, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import { kebabize, normalize } from '&/text.ts';
+import { useConfirmation } from '!/useConfirmation.tsx';
 import { ACTIONS_ENG } from '#/fields.ts';
 import { ACTIONS_AZE } from '#/translations.ts';
 import { clearStore, useStore } from '@/store.ts';
@@ -24,6 +25,7 @@ export const Actions = ({
   printRef: RefObject<HTMLElement | null>;
 }): ReactElement => {
   const { person, language } = useStore();
+  const { confirm } = useConfirmation();
   const [isCopied, setIsCopied] = useState(false);
   const [isPasteError, setIsPasteError] = useState(false);
 
@@ -77,9 +79,17 @@ export const Actions = ({
     }
   };
 
+  const clearStoreWithConfirmation = async (): Promise<void> => {
+    if (await confirm()) clearStore();
+  };
+
   return (
     <div id='actions'>
-      <button className='action-btn' id='clear-btn' onClick={clearStore} type='button'>
+      <button
+        className='action-btn'
+        id='clear-btn'
+        onClick={clearStoreWithConfirmation}
+        type='button'>
         <FontAwesomeIcon icon={faTrash} /> {/* isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear */}
       </button>
 

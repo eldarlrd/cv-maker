@@ -1,0 +1,59 @@
+.confirmation-overlay
+  inset 0
+  z-index 2
+  display flex
+  position fixed
+  align-items center
+  justify-content center
+  background overlay-fg
+
+.confirmation-modal
+  width 100%
+  color field-bg
+  max-width 24rem
+  user-select none
+  background main-fg
+  padding 1rem 0.875rem
+  box-shadow main-shadow
+  border-radius border-curve
+
+  p
+    margin 0
+    line-height 2rem
+    text-align center
+    font-size 1.25rem
+
+.confirmation-actions
+  gap 0.25rem
+  display flex
+  margin-top 1rem
+
+  button
+    flex 1
+    border 0
+    font: inherit
+    margin 0 1px
+    cursor pointer
+    color field-bg
+    height 2.875rem
+    font-weight 500
+    border-radius border-curve
+    transition transition-config
+    transition-property background, outline
+
+    &:focus-visible
+      outline edge-style highlight
+
+    &:first-child
+      background main-clear
+
+      @media (hover hover)
+        &:hover
+          background hover-clear
+
+    &:last-child
+      background main-download
+
+      @media (hover hover)
+        &:hover
+          background hover-download

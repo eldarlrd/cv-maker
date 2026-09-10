@@ -1,7 +1,7 @@
 {
   "name": "cv-maker",
   "private": true,
-  "version": "1.2.3",
+  "version": "1.3.0",
   "type": "module",
   "keywords": [
     "resume builder",
