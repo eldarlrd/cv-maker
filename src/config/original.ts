@@ -11,7 +11,7 @@ const SKILLSETS_ENG = {
 
 const ACTIONS_ENG = {
   add: 'Add',
-  clipboard: 'Copy',
+  copy: 'Copy',
   download: 'Download',
   edit: 'Edit',
   remove: 'Remove',

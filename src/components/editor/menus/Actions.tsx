@@ -61,7 +61,16 @@ export const Actions = ({
   const isEnglish = language === LANGUAGES.English;
 
   const copyStore = async (): Promise<void> => {
-    await navigator.clipboard.writeText(localStorage.getItem('store') ?? '');
+    const storedStore = localStorage.getItem('store');
+    const { state, ...metadata } = JSON.parse(storedStore ?? '{"state":{}}') as {
+      state: Record<string, unknown>;
+      [key: string]: unknown;
+    };
+    const clipboardState = Object.fromEntries(
+      Object.entries(state).filter(([key]) => key !== 'openMenus' && key !== 'language')
+    );
+
+    await navigator.clipboard.writeText(JSON.stringify({ ...metadata, state: clipboardState }));
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), CLIPBOARD_FEEDBACK_DURATION);
   };
@@ -115,7 +124,7 @@ export const Actions = ({
         disabled={!(normalizedName && normalizedTitle) || isCopied}
         id='copy-btn'
         onClick={copyStore}
-        title={isEnglish ? ACTIONS_ENG.clipboard : ACTIONS_AZE.clipboard}
+        title={isEnglish ? ACTIONS_ENG.copy : ACTIONS_AZE.copy}
         type='button'>
         <FontAwesomeIcon icon={isCopied ? faClipboardCheck : faClipboard} />
       </button>
