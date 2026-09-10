@@ -26,6 +26,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+      '&': '/src/utils',
       '#': '/src/config',
       '%': '/src/models',
       '$': '/src/slices',

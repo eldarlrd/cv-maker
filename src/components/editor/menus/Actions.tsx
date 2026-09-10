@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement, RefObject } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
+import { kebabize, normalize } from '&/text.ts';
 import { ACTIONS_ENG } from '#/fields.ts';
 import { ACTIONS_AZE } from '#/translations.ts';
 import { clearStore, useStore } from '@/store.ts';
@@ -15,10 +16,12 @@ export const Actions = ({
 }): ReactElement => {
   const { person, language } = useStore();
 
-  const kebabize = (str: string): string => str.trim().replaceAll(' ', '_');
+  const normalizedName = normalize(person.name, language);
+  const normalizedTitle = normalize(person.title, language);
+  const documentTitle = kebabize(`${normalizedName}_${normalizedTitle}_CV`);
+
   const reactToPrintFn = useReactToPrint({
     contentRef: printRef,
-    documentTitle: kebabize(`${person.name} ${person.title} CV`),
     pageStyle: `
       main {
         margin: 0 !important;
@@ -32,6 +35,9 @@ export const Actions = ({
     preserveAfterPrint: true,
     print: (printIframe) =>
       new Promise(() => {
+        const ownerDocument = printIframe.ownerDocument;
+        ownerDocument.title = documentTitle;
+
         printIframe.style.display = 'none';
         printIframe.contentWindow?.print();
       }),
@@ -45,7 +51,12 @@ export const Actions = ({
         <FontAwesomeIcon icon={faTrash} /> {/* isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear */}
       </button>
 
-      <button className='action-btn' id='download-btn' onClick={reactToPrintFn} type='button'>
+      <button
+        className='action-btn'
+        disabled={!(normalizedName && normalizedTitle)}
+        id='download-btn'
+        onClick={reactToPrintFn}
+        type='button'>
         <FontAwesomeIcon icon={faCircleDown} />{' '}
         {isEnglish ? ACTIONS_ENG.download : ACTIONS_AZE.download}
       </button>
