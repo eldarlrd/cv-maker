@@ -2,7 +2,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement } from 'react';
 
-import { SECTIONS_AZE } from '#/translations.ts';
+import { SECTIONS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 

@@ -13,8 +13,8 @@ import { useReactToPrint } from 'react-to-print';
 
 import { kebabize, normalize } from '&/text.ts';
 import { useConfirmation } from '!/useConfirmation.tsx';
-import { ACTIONS_ENG } from '#/fields.ts';
-import { ACTIONS_AZE } from '#/translations.ts';
+import { ACTIONS_ENG } from '#/original.ts';
+import { ACTIONS_AZE } from '#/translation.ts';
 import { clearStore, useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
@@ -93,6 +93,7 @@ export const Actions = ({
         className='action-btn'
         id='clear-btn'
         onClick={clearStoreWithConfirmation}
+        title={isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear}
         type='button'>
         <FontAwesomeIcon icon={faTrash} /> {/* isEnglish ? ACTIONS_ENG.clear : ACTIONS_AZE.clear */}
       </button>

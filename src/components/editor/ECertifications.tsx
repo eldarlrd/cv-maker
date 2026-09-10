@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { type ChangeEvent, type ReactElement, useState } from 'react';
 
-import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '#/fields.ts';
-import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '#/translations.ts';
+import { ACTIONS_ENG, CERTIFICATIONS_ENG } from '#/original.ts';
+import { ACTIONS_AZE, CERTIFICATIONS_AZE } from '#/translation.ts';
 import { DndList } from '@/components/editor/menus/DndList.tsx';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { useStore } from '@/store.ts';

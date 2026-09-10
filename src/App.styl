@@ -16,6 +16,7 @@ preview-fg = black
 preview-bg = white
 tap-fg = #1e293b80
 tap-bg = #f1f5f980
+tooltip-fg = #0f172a
 main-font = 'Geist-Variable'
 main-shadow = 0 0 1px 0 tap-fg
 link-shadow = 0 2px 10px preview-link
@@ -51,5 +52,10 @@ transition-config = 150ms cubic-bezier(0.4, 0, 0.2, 1)
   ::selection
     color main-bg
     background main-fg
+
+.tippy-box[data-theme~='slate']
+  color main-bg
+  background tooltip-fg
+  box-shadow main-shadow
 
 @import 'styles/**/*.styl'

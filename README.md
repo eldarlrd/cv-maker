@@ -9,6 +9,7 @@
 > - **[Nano ID](https://zelark.github.io/nano-id-cc)**
 > - **[dnd kit](https://dndkit.com)**
 > - **[Stylus](https://stylus-lang.com)**
+> - **[Tippy.js](https://atomiks.github.io/tippyjs)**
 > - **[ReactToPrint](https://github.com/MatthewHerbst/react-to-print)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Font Awesome](https://fontawesome.com)**

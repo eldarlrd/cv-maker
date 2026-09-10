@@ -2,8 +2,8 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ChangeEvent, ReactElement } from 'react';
 
-import { PERSONAL_ENG } from '#/fields.ts';
-import { PERSONAL_AZE } from '#/translations.ts';
+import { PERSONAL_ENG } from '#/original.ts';
+import { PERSONAL_AZE } from '#/translation.ts';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';

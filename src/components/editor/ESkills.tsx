@@ -1,7 +1,7 @@
 import type { ChangeEvent, ReactElement } from 'react';
 
-import { SKILLSETS_ENG } from '#/fields.ts';
-import { SKILLSETS_AZE } from '#/translations.ts';
+import { SKILLSETS_ENG } from '#/original.ts';
+import { SKILLSETS_AZE } from '#/translation.ts';
 import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';

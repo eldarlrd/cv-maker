@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
-import { SKILLSETS_ENG } from '#/fields.ts';
-import { SECTIONS_AZE, SKILLSETS_AZE } from '#/translations.ts';
+import { SKILLSETS_ENG } from '#/original.ts';
+import { SECTIONS_AZE, SKILLSETS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 

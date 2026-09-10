@@ -64,6 +64,10 @@ const CERTIFICATIONS_ENG = {
   title: 'Title',
 };
 
+const SOURCE_ENG = {
+  source: 'Source',
+};
+
 export {
   ACTIONS_ENG,
   CERTIFICATIONS_ENG,
@@ -73,4 +77,5 @@ export {
   PERSONAL_ENG,
   PROJECTS_ENG,
   SKILLSETS_ENG,
+  SOURCE_ENG,
 };

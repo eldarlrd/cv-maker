@@ -72,6 +72,10 @@ const CERTIFICATIONS_AZE = {
   title: 'Başlıq',
 };
 
+const SOURCE_AZE = {
+  source: 'Mənbə',
+};
+
 export {
   ACTIONS_AZE,
   CERTIFICATIONS_AZE,
@@ -82,4 +86,5 @@ export {
   PROJECTS_AZE,
   SECTIONS_AZE,
   SKILLSETS_AZE,
+  SOURCE_AZE,
 };

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
-import { PROJECTS_ENG } from '#/fields.ts';
-import { PROJECTS_AZE, SECTIONS_AZE } from '#/translations.ts';
+import { PROJECTS_ENG } from '#/original.ts';
+import { PROJECTS_AZE, SECTIONS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 

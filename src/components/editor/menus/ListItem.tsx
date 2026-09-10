@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { ReactElement } from 'react';
 
 import { useConfirmation } from '!/useConfirmation.tsx';
-import { ACTIONS_ENG } from '#/fields.ts';
-import { ACTIONS_AZE } from '#/translations.ts';
+import { ACTIONS_ENG } from '#/original.ts';
+import { ACTIONS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
 import type { ListItemProps } from '%/dndList.model.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
