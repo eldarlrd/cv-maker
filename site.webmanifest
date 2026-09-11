@@ -1,26 +1,21 @@
 {
-  "name": "CV Maker",
-  "short_name": "CV Maker",
-  "dir": "ltr",
-  "lang": "en",
-  "categories": [
-    "business",
-    "personalization",
-    "productivity",
-    "utilities"
-  ],
-  "display": "fullscreen",
-  "orientation": "natural",
-  "theme_color": "#1e293b",
-  "background_color": "#f1f5f9",
-  "description": "A Resume Builder",
-  "start_url": "https://eldarlrd.github.io/cv-maker/",
-  "icons": [
-    {
-      "src": "favicon.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    }
-  ]
+	"name": "CV Maker",
+	"short_name": "CV Maker",
+	"dir": "ltr",
+	"lang": "en",
+	"categories": ["business", "personalization", "productivity", "utilities"],
+	"display": "fullscreen",
+	"orientation": "natural",
+	"theme_color": "#1e293b",
+	"background_color": "#f1f5f9",
+	"description": "A Resume Builder",
+	"start_url": "https://eldarlrd.github.io/cv-maker/",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any maskable"
+		}
+	]
 }
