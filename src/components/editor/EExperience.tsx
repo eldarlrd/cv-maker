@@ -65,7 +65,6 @@ export const EExperience = (): ReactElement => {
     !(
       experienceObj.employer &&
       experienceObj.position &&
-      experienceObj.location &&
       experienceObj.startDate &&
       experienceObj.descriptions.length > 0
     ) || experienceObj.descriptions.some((desc) => desc.trim() === '');

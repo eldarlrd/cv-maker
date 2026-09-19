@@ -27,7 +27,8 @@ export const PExperience = (): ReactElement => {
                 </h2>
 
                 <h3>
-                  {experience.location} | {experience.startDate} -{' '}
+                  {experience.location ? `${experience.location} | ` : ''}
+                  {experience.startDate} -{' '}
                   {experience.endDate || (isEnglish ? 'Present' : 'Hazırda')}
                 </h3>
               </span>
