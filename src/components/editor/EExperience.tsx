@@ -146,7 +146,6 @@ export const EExperience = (): ReactElement => {
             label={isEnglish ? EXPERIENCE_ENG.location : EXPERIENCE_AZE.location}
             maxLength={128}
             onChange={handleExperienceInput}
-            required
             value={experienceObj.location}
           />
 
