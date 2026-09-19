@@ -29,7 +29,13 @@ const createExperienceSlice: StateCreator<ExperienceState> = (set) => {
   return {
     addExperience: (newExperience: ExperienceDetails): void => {
       set((state) => ({
-        experience: [newExperience, ...state.experience],
+        experience: [
+          {
+            ...newExperience,
+            location: newExperience.location.trim(),
+          },
+          ...state.experience,
+        ],
       }));
     },
     experience: initialExperience,
@@ -40,7 +46,12 @@ const createExperienceSlice: StateCreator<ExperienceState> = (set) => {
       }));
     },
     sortExperience: (sortedExperience: ExperienceDetails[]): void => {
-      set({ experience: sortedExperience });
+      set({
+        experience: sortedExperience.map((experience) => ({
+          ...experience,
+          location: experience.location.trim(),
+        })),
+      });
     },
   };
 };
