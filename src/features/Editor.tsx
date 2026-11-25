@@ -1,6 +1,6 @@
 import type { ReactElement, RefObject } from 'react';
 
-import { ECertifications } from '@/components/editor/ECertifications.tsx';
+import { ECertificates } from '@/components/editor/ECertificates.tsx';
 import { EEducation } from '@/components/editor/EEducation.tsx';
 import { EExperience } from '@/components/editor/EExperience.tsx';
 import { EPerson } from '@/components/editor/EPerson.tsx';
@@ -16,7 +16,7 @@ export const Editor = ({ printRef }: { printRef: RefObject<HTMLElement | null> }
       <EEducation />
       <ESkills />
       <EProjects />
-      <ECertifications />
+      <ECertificates />
       <Actions printRef={printRef} />
     </form>
   </section>

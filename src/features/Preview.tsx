@@ -1,6 +1,6 @@
 import type { ReactElement, RefObject } from 'react';
 
-import { PCertifications } from '@/components/preview/PCertifications.tsx';
+import { PCertificates } from '@/components/preview/PCertificates.tsx';
 import { PEducation } from '@/components/preview/PEducation.tsx';
 import { PExperience } from '@/components/preview/PExperience.tsx';
 import { PPerson } from '@/components/preview/PPerson.tsx';
@@ -18,6 +18,6 @@ export const Preview = ({
     <PEducation />
     <PSkills />
     <PProjects />
-    <PCertifications />
+    <PCertificates />
   </main>
 );

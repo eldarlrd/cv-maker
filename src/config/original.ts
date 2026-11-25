@@ -58,7 +58,7 @@ const PROJECTS_ENG = {
   stack: 'Stack',
 };
 
-const CERTIFICATIONS_ENG = {
+const CERTIFICATES_ENG = {
   issuer: 'Issuer',
   link: 'Link',
   title: 'Title',
@@ -70,7 +70,7 @@ const SOURCE_ENG = {
 
 export {
   ACTIONS_ENG,
-  CERTIFICATIONS_ENG,
+  CERTIFICATES_ENG,
   CONFIRMATION_ENG,
   EDUCATION_ENG,
   EXPERIENCE_ENG,

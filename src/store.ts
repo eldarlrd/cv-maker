@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { type CertificationsState, createCertificationsSlice } from '$/certificationsSlice.ts';
+import { type CertificatesState, createCertificatesSlice } from '$/certificatesSlice.ts';
 import { type EducationState, createEducationSlice } from '$/educationSlice.ts';
 import { type ExperienceState, createExperienceSlice } from '$/experienceSlice.ts';
 import { type LanguageState, createLanguageSlice } from '$/languageSlice.ts';
@@ -17,7 +17,7 @@ interface StoreState
     EducationState,
     SkillsState,
     ProjectsState,
-    CertificationsState,
+    CertificatesState,
     OpenMenusState,
     LanguageState {}
 
@@ -29,7 +29,7 @@ const useStore = create<StoreState>()(
       ...createEducationSlice(...a),
       ...createSkillsSlice(...a),
       ...createProjectsSlice(...a),
-      ...createCertificationsSlice(...a),
+      ...createCertificatesSlice(...a),
       ...createOpenMenusSlice(...a),
       ...createLanguageSlice(...a),
     }),

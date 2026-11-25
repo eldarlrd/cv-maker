@@ -28,7 +28,7 @@ const CONFIRMATION_AZE = {
 } as const;
 
 const SECTIONS_AZE = {
-  Certifications: 'Sertifikatlar',
+  Certificates: 'Sertifikatlar',
   Education: 'Təhsil',
   Experience: 'Təcrübə',
   Personal: 'Şəxsi',
@@ -67,7 +67,7 @@ const PROJECTS_AZE = {
   stack: 'Texnologiya',
 };
 
-const CERTIFICATIONS_AZE = {
+const CERTIFICATES_AZE = {
   issuer: 'Təşkilat',
   link: 'Keçid',
   title: 'Başlıq',
@@ -79,7 +79,7 @@ const SOURCE_AZE = {
 
 export {
   ACTIONS_AZE,
-  CERTIFICATIONS_AZE,
+  CERTIFICATES_AZE,
   CONFIRMATION_AZE,
   EDUCATION_AZE,
   EXPERIENCE_AZE,

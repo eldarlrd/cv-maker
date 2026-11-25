@@ -4,31 +4,31 @@ import { SECTIONS_AZE } from '#/translation.ts';
 import { useStore } from '@/store.ts';
 import { LANGUAGES } from '$/languageSlice.ts';
 
-export const PCertifications = (): ReactElement => {
-  const section = 'Certifications';
-  const { certifications, language } = useStore();
+export const PCertificates = (): ReactElement => {
+  const section = 'Certificates';
+  const { certificates, language } = useStore();
 
-  const hasCertifications = certifications.length > 0;
+  const hasCertificates = certificates.length > 0;
   const isEnglish = language === LANGUAGES.English;
 
   return (
     <div className='content simple'>
-      {hasCertifications && (
+      {hasCertificates && (
         <>
           <h1>
             {isEnglish ? section.toUpperCase() : SECTIONS_AZE[section].toLocaleUpperCase('az')}
           </h1>
 
           <ul>
-            {certifications.map((certification) => (
-              <li key={certification.id}>
-                {certification.certTitle} -{' '}
-                {certification.link ? (
-                  <a href={certification.link} rel='noreferrer' title={certification.link}>
-                    {certification.issuer}
+            {certificates.map((certificate) => (
+              <li key={certificate.id}>
+                {certificate.certTitle} -{' '}
+                {certificate.link ? (
+                  <a href={certificate.link} rel='noreferrer' title={certificate.link}>
+                    {certificate.issuer}
                   </a>
                 ) : (
-                  certification.issuer
+                  certificate.issuer
                 )}
               </li>
             ))}
